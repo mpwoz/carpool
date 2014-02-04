@@ -17,5 +17,7 @@ There are two parts:
 Technologies
 ------------
 
-A good boilerplate project: https://github.com/twilson63/express-coffee
+Node.js for the API server
+Angular for the responsive client
+Bootstrap for easy styling
 
