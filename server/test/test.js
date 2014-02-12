@@ -1,11 +1,7 @@
-// Just a sample test, we'll expand these as we build the project
-
-var assert = require("assert");
-describe('Array', function(){
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function(){
-      assert.equal(-1, [1,2,3].indexOf(5));
-        assert.equal(-1, [1,2,3].indexOf(0));
-    })
-  })
-})
+// TODO this doesn't seem to work with the node-jasmine command
+//
+describe("Test Suite", function() {
+  it("contains a spec with an expectation", function() {
+    expect(true).toBe(true);
+  });
+});
