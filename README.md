@@ -1,23 +1,42 @@
-carpool
-=======
+# carpool
 
 Application for linking student drivers with riders
-and allowing them to carpool to and from the suburbs
+and allowing them to carpool to and from Chicago 
 with minimal hassle. 
 
 
-Architecture
-------------
+## Architecture
 
 There are two parts:
-* A REST API server written in node.js handles the backend operations. 
-* A responsive client written in Angular.js for a smooth user experience.
+* A REST API server
+    - Node.js
+* A responsive front-end
+    - AngularJS
+    - Twitter Bootstrap
 
 
-Technologies
-------------
+## Documentation
 
-Node.js for the API server
-Angular for the responsive client
-Bootstrap for easy styling
+### Installation
 
+1. Install [node.js](http://nodejs.org/)
+2. `npm install` to install all dependencies
+
+### Running Locally
+
+1. `./scripts/start-server.sh`
+2. Open browser to [http://localhost:8000](http://localhost:8000)
+
+### Running Tests
+
+#### Unit Tests
+
+Run the `test.sh` script to run all server and client unit tests.
+
+`./scripts/test.sh`
+
+#### End-To-End Tests
+
+Run the `e2e-test.sh` script to run all end-to-end tests.
+
+`./scripts/e2e-test.sh`
