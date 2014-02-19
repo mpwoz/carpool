@@ -5,13 +5,13 @@
   "dependencies": {
     "express": "~3.2.6",
     "jade": "~0.31.2",
-    "node-mysql": "~0.3.6"
+    "mysql": "~2.0.1"
   },
   "devDependencies": {
-    "phantomjs" : "~1.9",
-    "karma" : "~0.10",
-    "karma-junit-reporter" : "~0.1",
-    "karma-jasmine" : "~0.1",
-    "protractor" : "~0.17.0"
+    "phantomjs": "~1.9",
+    "karma": "~0.10",
+    "karma-junit-reporter": "~0.1",
+    "karma-jasmine": "~0.1",
+    "protractor": "~0.17.0"
   }
 }
