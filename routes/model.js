@@ -22,3 +22,13 @@ module.exports.testSelect = function(id) {
 };
 
 
+// Select by email (to get the id)
+module.exports.getEmail(email) {
+  connection.connect();
+  connection.query('SELECT * FROM `carpool_db`.`email` WHERE `email` = ?', email, function(err, rows, fields) {
+    if (err) throw err;
+    console.log(rows[0].id);
+    console.log(rows[0].email);
+  });
+  connection.end();
+}
