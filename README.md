@@ -5,9 +5,6 @@ and allowing them to carpool to and from Chicago
 with minimal hassle. 
 
 
-REMOVE ME THIS IS A TEST
-
-
 ## Architecture
 
 There are two parts:
