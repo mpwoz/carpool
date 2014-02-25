@@ -33,10 +33,14 @@ There are two parts:
 Set up [https://devcenter.heroku.com/articles/quickstart](Heroku)
 
 Add the git remote so you can push to heroku 
+
 `git remote add heroku git@heroku.com:cps-carpool.git`
 
 Then, commit all your changes and run 
+
 `git push heroku master`
+
+To view the site, visit [http://cps-carpool.herokuapp.com](http://cps-carpool.herokuapp.com)
 
 ### Running Tests
 
