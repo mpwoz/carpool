@@ -13,5 +13,8 @@
     "karma-junit-reporter": "~0.1",
     "karma-jasmine": "~0.1",
     "protractor": "~0.17.0"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
