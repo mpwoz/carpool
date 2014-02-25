@@ -36,6 +36,8 @@ if (app.get('env') === 'production') {
 };
 
 
+console.log("Starting server")
+
 /**
  * Routes
  */
