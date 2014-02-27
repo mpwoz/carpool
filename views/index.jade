@@ -1,15 +1,18 @@
 extends layout
 
-block body
-  div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
 
-    div(ng-view)
+block body
+  div.container(ng-controller='AppCtrl')
+    .row
+      div.col-md-4
+        h2 Welcome to Carpool!
+    .row
+      div.col-md-4
+        a.btn.btn-primary(href='newride') New Ride
+        a.btn.btn-primary(href='rides') All Rides
+    .row
+      div.col-md-8
+        div(ng-view)
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
