@@ -2,17 +2,24 @@ extends layout
 
 
 block body
-  div.container(ng-controller='AppCtrl')
-    .row
-      div.col-md-4
-        h2 Welcome to Carpool!
-    .row
-      div.col-md-4
-        a.btn.btn-primary(href='newride') New Ride
-        a.btn.btn-primary(href='rides') All Rides
-    .row
-      div.col-md-8
+  .site-wrapper
+    .site-wrapper-inner
+      .cover-container
+        .masthead.clearfix
+          .inner
+            h3.masthead-brand Carpool
+            ul.nav.masthead-nav(ng-controller="HeaderCtrl")
+              li(ng-class="{ active: isActive('/home')}")
+                a(href='/home') Home
+              li(ng-class="{ active: isActive('/about')}")
+                a(href='#') About
+        div(ng-controller='AppCtrl')
         div(ng-view)
+        .mastfoot
+          .inner
+            p
+              | handmade in Champaign-Urbana
+
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
