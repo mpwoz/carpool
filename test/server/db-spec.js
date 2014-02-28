@@ -1,9 +1,14 @@
 
-var db = require('../../models/rides');
+var rides = require('../../models/rides'),
+    db = require('../../models/mysql_db');
 
 describe("database", function() {
   it("should select a row", function() {
-    rows = db.getRide({ id: '0' });
-    expect(rows).toBeDefined();
+    rides.select({'id': '2'}, function(rows, fields) {
+      console.log(rows);
+      expect(rows).toBeDefined();
+    });
   });
+
 });
+

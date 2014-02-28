@@ -10,13 +10,11 @@ var connection = mysql.createConnection({
 });
 
 
-
 // Select items matching the given fields JSON
-module.exports.select = function(table, fields) {
-  //connection.query('SELECT * FROM `carpool_db`.`'+table+'` WHERE ?', fields, function(err, rows, fields) {
-  connection.query('SELECT * FROM `carpool_db`.`ride`', function(err, rows, fields) {
-  //connection.query('select * from `carpool_db`.`ride`;', function(err, rows, fields) {
+module.exports.select = function(table, cols, callback) {
+  connection.query('SELECT * FROM `carpool_db`.`' + table + '` WHERE ?', cols, function(err, rows, fields) {
     if (err) throw err;
-    return rows
+    callback(rows, fields);
   });
 }
+
