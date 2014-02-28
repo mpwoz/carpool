@@ -6,36 +6,34 @@ describe('my app', function() {
 
   browser.get('index.html');
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+  it('should automatically redirect to /rides when location hash/fragment is empty', function() {
+    expect(browser.getLocationAbsUrl()).toMatch("/rides");
   });
 
 
-  describe('view1', function() {
+  describe('rides', function() {
 
     beforeEach(function() {
-      browser.get('/view1');
+      browser.get('/rides');
     });
 
-
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+    it('should render list of all rides when user navigates to /rides', function() {
+      expect(element.all(by.css('[ng-view] .well')).first().getText()).
+        toMatch(/list of all rides/);
     });
 
   });
 
 
-  describe('view2', function() {
+  describe('newride', function() {
 
     beforeEach(function() {
-      browser.get('/view2');
+      browser.get('/newride');
     });
 
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+    it('should render the new ride input form when user navigates to /newride', function() {
+      var email_input = element(by.css('[ng-view] input[placeholder="Email"]'));
+      expect(email_input.isDisplayed()).toBe(true);
     });
 
   });
