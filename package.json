@@ -10,6 +10,7 @@
   "devDependencies": {
     "phantomjs": "~1.9",
     "karma": "~0.10",
+    "jasmine-node": "~1.13.1",
     "karma-junit-reporter": "~0.1",
     "karma-jasmine": "~0.1",
     "protractor": "~0.17.0"
