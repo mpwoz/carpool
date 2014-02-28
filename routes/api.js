@@ -1,8 +1,8 @@
 /*
  * Serve JSON to our AngularJS client
  */
-exports.name = function (req, res) {
-  res.json({
-  	name: 'Bob'
+exports.emails = function (req, res) {
+  res.json({ 
+    emails: ['martin.woz@gmail.com', 'wozniew1@illinois.edu']
   });
-};
+}
