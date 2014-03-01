@@ -3,15 +3,14 @@
  */
 var rideData = require('../models/rides');
 
-exports.emails = function (req, res) {
-  res.json({ 
-    emails: ['martin.woz@gmail.com', 'wozniew1@illinois.edu']
-  });
-};
-
-// Get all rides
-exports.allRides = function(req, res) {
-  res.json({
-    test: 'testing'
+// Create a new ride and persist it to the database
+// If successful, return the id of the new row
+exports.newRide = function (req, res) {
+  rideData.insert(req.body, function(result) {
+    if result.affectedRows === 1 {
+      res.send(200, {'id': result.insertId});
+    } else {
+      res.send(500, "Insert unsuccessful, check server logs.");
+    }
   });
 };
