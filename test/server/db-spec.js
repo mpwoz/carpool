@@ -19,6 +19,7 @@ describe("rides database", function() {
   it("should insert a row", function() {
     var id;
     rides.insert({ 'email': email }, function(result) {
+      console.log(result);
       id = result.insertId
       expect(result).toBeDefined();
     });
@@ -32,7 +33,6 @@ describe("rides database", function() {
   it("should delete a row", function() {
     // TODO select all test@test.com, compare before/after delete
     rides.delete({'email': email}, function(result) {
-      console.log(result);
       expect(result).toBeDefined();
     });
   });
