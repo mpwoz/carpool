@@ -43,9 +43,8 @@ if (app.get('env') === 'production') {
 app.get('/', pages.index);
 app.get('/partials/:name', pages.partials);
 
-// JSON API
-app.get('/api/emails', api.emails);
-app.get('/api/rides', api.allRides);
+/* JSON API */
+app.post('/api/rides', api.newRide);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', pages.index);
