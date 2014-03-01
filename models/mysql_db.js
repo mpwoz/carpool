@@ -14,8 +14,16 @@ var connection = mysql.createConnection({
 // Select items matching the given fields JSON
 module.exports.select = function(table, fields, callback) {
   connection.query('SELECT * FROM ?? WHERE ?', [table, fields], function(err, rows, fields) {
-    if (err) throw err;
+    if (err) console.log(err);
     callback(rows, fields);
   });
 }
 
+
+// Select all items, no WHERE clause
+module.exports.selectAll = function(table, callback) {
+  connection.query('SELECT * FROM ??', table, function(err, rows, fields) {
+    if (err) console.log(err);
+    callback(rows, fields);
+  });
+}

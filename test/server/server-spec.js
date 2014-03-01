@@ -3,11 +3,8 @@
 /* jasmine specs for server go here */
 
 describe("server", function() {
-  var a;
 
-  it("should be true", function() {
-    a = true;
+  it("should return something for ride list", function() {
 
-    expect(a).toBe(true);
   });
 });

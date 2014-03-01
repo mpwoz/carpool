@@ -45,6 +45,7 @@ app.get('/partials/:name', pages.partials);
 
 // JSON API
 app.get('/api/emails', api.emails);
+app.get('/api/rides', api.allRides);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', pages.index);
