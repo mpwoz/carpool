@@ -4,7 +4,7 @@
 var rideData = require('../models/rides');
 
 exports.emails = function (req, res) {
-  res.json({ 
+  res.json({
     emails: ['martin.woz@gmail.com', 'wozniew1@illinois.edu']
   });
 };
@@ -15,3 +15,9 @@ exports.allRides = function(req, res) {
     test: 'testing'
   });
 };
+
+exports.newRide = function(req, res) {
+  res.json({
+    msg: 'endpoint hit'
+  });
+}
