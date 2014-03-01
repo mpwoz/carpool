@@ -1,5 +1,5 @@
 var db = require('./mysql_db');
 
-module.exports.select = function(fields, callback) {
-  db.select('ride', fields, callback);
+module.exports.select = function(fields, done) {
+  db.select('ride', fields, done);
 };

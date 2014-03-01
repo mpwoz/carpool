@@ -2,17 +2,18 @@
 
 var mysql = require('mysql');
 
-// TODO this should be a config file
+// TODO this should be in a config file
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'admin'
+  password: 'admin',
+  database: 'carpool_db'
 });
 
 
 // Select items matching the given fields JSON
-module.exports.select = function(table, cols, callback) {
-  connection.query('SELECT * FROM `carpool_db`.`' + table + '` WHERE ?', cols, function(err, rows, fields) {
+module.exports.select = function(table, fields, callback) {
+  connection.query('SELECT * FROM ?? WHERE ?', [table, fields], function(err, rows, fields) {
     if (err) throw err;
     callback(rows, fields);
   });
