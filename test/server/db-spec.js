@@ -11,10 +11,33 @@ describe("rides database", function() {
 
   it("should select all rows", function() {
     rides.fetchList(function(rows, fields) {
-      console.log(rows);
       expect(rows).toBeDefined();
     });
   });
+
+  var email = 'test@test.com';
+  it("should insert a row", function() {
+    var id;
+    rides.insert({ 'email': email }, function(result) {
+      id = result.insertId
+      expect(result).toBeDefined();
+    });
+
+    rides.select({'id': id}, function(rows, fields) {
+      expect(rows[0].email).toEqual(email);
+    });
+  });
+
+
+  it("should delete a row", function() {
+    // TODO select all test@test.com, compare before/after delete
+    rides.delete({'email': email}, function(result) {
+      console.log(result);
+      expect(result).toBeDefined();
+    });
+  });
+
+
 
 });
 

@@ -11,19 +11,33 @@ var connection = mysql.createConnection({
 });
 
 
+module.exports.delete = function(table, fields, done) {
+  connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
+    if (err) console.log(err);
+    done(result);
+  });
+}
+
+module.exports.insert = function(table, fields, done) {
+  connection.query('INSERT INTO ?? SET ?', [table, fields], function(err, result) {
+    if (err) console.log(err);
+    done(result);
+  });
+}
+
 // Select items matching the given fields JSON
-module.exports.select = function(table, fields, callback) {
+module.exports.select = function(table, fields, done) {
   connection.query('SELECT * FROM ?? WHERE ?', [table, fields], function(err, rows, fields) {
     if (err) console.log(err);
-    callback(rows, fields);
+    done(rows, fields);
   });
 }
 
 
 // Select all items, no WHERE clause
-module.exports.selectAll = function(table, callback) {
+module.exports.selectAll = function(table, done) {
   connection.query('SELECT * FROM ??', table, function(err, rows, fields) {
     if (err) console.log(err);
-    callback(rows, fields);
+    done(rows, fields);
   });
 }
