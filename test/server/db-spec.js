@@ -1,6 +1,6 @@
 
-var rides = require('../../models/rides'),
-    db = require('../../models/mysql_db');
+var rides = require('../../models/ride'),
+    tokens = require('../../models/token');
 
 describe("rides database", function() {
   it("should select a row", function() {
@@ -36,7 +36,6 @@ describe("rides database", function() {
       expect(result).toBeDefined();
     });
   });
-
 
 
 });

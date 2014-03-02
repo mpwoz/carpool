@@ -5,7 +5,8 @@
   "dependencies": {
     "express": "~3.2.6",
     "jade": "~0.31.2",
-    "mysql": "~2.0.1"
+    "mysql": "~2.0.1",
+    "node-uuid": "~1.4.1"
   },
   "devDependencies": {
     "phantomjs": "~1.9",

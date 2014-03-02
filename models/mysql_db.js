@@ -11,6 +11,13 @@ var connection = mysql.createConnection({
 });
 
 
+module.exports.update = function(table, updateFields, whereFields, done) {
+  connection.query('UPDATE ?? SET ? WHERE ?', [table, updateFields, whereFields], function(err, result) {
+    if (err) console.log(err);
+    done(result);
+  });
+}
+
 module.exports.delete = function(table, fields, done) {
   connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
     if (err) console.log(err);

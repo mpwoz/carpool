@@ -13,3 +13,10 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`ride` (
 
 INSERT INTO `carpool_db`.`ride` (`email`) VALUES ('wozniew1@illinois.edu');
 
+
+-- Verification tokens for email confirmations
+CREATE TABLE IF NOT EXISTS `carpool_db`.`token` (
+  `ride_id` INT NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP );
+
