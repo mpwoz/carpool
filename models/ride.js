@@ -16,3 +16,7 @@ module.exports.select = function(fields, done) {
 module.exports.fetchList = function(done) {
   db.selectAll('ride', done);
 }
+
+module.exports.setConfirmed = function(id, done) {
+  db.update('ride', {'confirmed': 1}, {'id': id}, done);
+}
