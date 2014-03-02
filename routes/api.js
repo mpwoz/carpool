@@ -22,7 +22,7 @@ exports.newRide = function (req, res) {
       tokenModel.createToken(ride_id, function(token) {
         // TODO send the email here
         var verifyURL = req.protocol + '://' + req.get('host') + '/api/verify/' + token;
-        emailer.sendVerificationEmail(email, verifyURL);
+        emailer.sendConfirmationEmail(email, verifyURL);
       });
       res.send(200, { 'id': ride_id });
     } else {

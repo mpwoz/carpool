@@ -6,7 +6,6 @@
 var express = require('express'),
   pages = require('./routes/index'),
   api = require('./routes/api'),
-  email = require('./library/email/email'),
   http = require('http'),
   path = require('path');
 
@@ -47,7 +46,6 @@ if (app.get('env') === 'production') {
 // serve index and view partials
 app.get('/', pages.index);
 app.get('/partials/:name', pages.partials);
-app.get('/sendemail', email.sendemail);
 
 /* JSON API */
 app.post('/api/rides', api.newRide);
