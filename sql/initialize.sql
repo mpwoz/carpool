@@ -1,5 +1,5 @@
 -- Create the database
-DROP SCHEMA `carpool_db`;
+DROP SCHEMA IF EXISTS `carpool_db`;
 CREATE SCHEMA IF NOT EXISTS `carpool_db`;
 
 -- Create ride table (TODO just emails for Iter 3, for Iter 4 we'll need other stuff)
