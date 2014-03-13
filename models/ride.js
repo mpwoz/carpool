@@ -4,6 +4,7 @@ module.exports.delete = function(fields, done) {
   db.delete('ride', fields, done);
 };
 
+// Insert a ride with the given fields
 module.exports.insert = function(fields, done) {
   db.insert('ride', fields, done);
 };

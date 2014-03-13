@@ -26,10 +26,10 @@ exports.getRide = function (req, res) {
 // If successful, return the id of the new row
 // Also handle creating a confirmation token and sending the email here
 exports.newRide = function (req, res) {
-  var email = req.body.email;
+  // TODO serverside validation
 
   // Insert the email into our database
-  rideModel.insert({'email': email}, function(result) {
+  rideModel.insert(req.body, function(result) {
     if (result.affectedRows === 1) {
 
       // The ride's unique database ID
@@ -37,9 +37,8 @@ exports.newRide = function (req, res) {
 
       // generate the token and email the user to confirm
       tokenModel.createToken(ride_id, function(token) {
-        // TODO send the email here
         var verifyURL = req.protocol + '://' + req.get('host') + '/api/verify/' + token;
-        emailer.sendConfirmationEmail(email, verifyURL);
+        emailer.sendConfirmationEmail(req.body.email, verifyURL);
       });
       res.send(200, { 'id': ride_id });
     } else {
