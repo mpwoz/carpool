@@ -1,3 +1,5 @@
+div#messages.alert.alert-success(ng-show="success") {{success}}
+div#messages.alert.alert-danger(ng-show="fail") {{fail}}
 form(name="newride_form", role="form", ng-submit="createRide()")
   div(class="form-group")
     label(for="email_input") Write your @illinois.edu email here to post a ride.
