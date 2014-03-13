@@ -14,7 +14,9 @@ module.exports.select = function(fields, done) {
 };
 
 module.exports.fetchList = function(done) {
-  db.selectAll('ride', done);
+  db.select('ride', {"confirmed": 1}, function(rows, fields) {
+    done(rows);
+  });
 }
 
 module.exports.setConfirmed = function(id, done) {

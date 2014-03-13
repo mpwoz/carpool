@@ -1,8 +1,6 @@
-
 /**
  * Module dependencies
  */
-
 var express = require('express'),
   pages = require('./routes/index'),
   api = require('./routes/api'),
@@ -11,13 +9,9 @@ var express = require('express'),
 
 var app = module.exports = express();
 
-
-
-
 /**
  * Configuration
  */
-
 // all environments
 app.set('port', process.env.PORT || 8000);
 app.set('views', __dirname + '/views');
@@ -48,6 +42,7 @@ app.get('/', pages.index);
 app.get('/partials/:name', pages.partials);
 
 /* JSON API */
+app.get('/api/rides', api.listRides);
 app.post('/api/rides', api.newRide);
 app.get('/api/verify/:token', api.verify);
 

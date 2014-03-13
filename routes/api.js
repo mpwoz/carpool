@@ -5,6 +5,13 @@ var rideModel = require('../models/ride'),
     tokenModel = require('../models/token'),
     emailer = require('../email/email');
 
+exports.listRides = function (req, res) {
+  rideModel.fetchList(function(rows) {
+    console.log(rows);
+    res.json(rows);
+  });
+};
+
 // Create a new ride and persist it to the database
 // If successful, return the id of the new row
 // Also handle creating a confirmation token and sending the email here
