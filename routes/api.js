@@ -12,6 +12,16 @@ exports.listRides = function (req, res) {
   });
 };
 
+// Get a single ride by id
+// TODO in the future, this will also join on rider table, feedback, etc. 
+// to get more detail for the ride page
+exports.getRide = function (req, res) {
+  var id = req.params.id;
+  rideModel.fetchRide(id, function(row) {
+    res.json(row);
+  });
+};
+
 // Create a new ride and persist it to the database
 // If successful, return the id of the new row
 // Also handle creating a confirmation token and sending the email here
