@@ -2,38 +2,45 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/getting-started.md */
 
-describe('my app', function() {
+describe('carpool', function() {
 
   browser.get('index.html');
 
-  it('should automatically redirect to /rides when location hash/fragment is empty', function() {
-    expect(browser.getLocationAbsUrl()).toMatch("/rides");
+  it('should automatically redirect to /home when location hash/fragment is empty', function() {
+    expect(browser.getLocationAbsUrl()).toMatch("/home");
   });
 
-
-  describe('rides', function() {
-
-    beforeEach(function() {
-      browser.get('/rides');
-    });
-
-    it('should render list of all rides when user navigates to /rides', function() {
-      expect(element.all(by.css('[ng-view] .well')).first().getText()).
-        toMatch(/list of all rides/);
-    });
-
-  });
-
-
-  describe('newride', function() {
+  describe('Creating a new ride', function() {
 
     beforeEach(function() {
       browser.get('/newride');
     });
 
-    it('should render the new ride input form when user navigates to /newride', function() {
-      var email_input = element(by.css('[ng-view] input[placeholder="Email"]'));
-      expect(email_input.isDisplayed()).toBe(true);
+    var email_input = element(by.model('email'));
+
+    it('should not submit the form if the email is invalid', function() {
+      var invalid_emails = ['hello1@@asdf.com', 'asdf', '12345', '    blah@#hello.com'];
+
+      for(var i = 0; i < invalid_emails.length; i++) {
+        email_input.sendKeys(invalid_emails[i]);
+        var error_text = element(by.css('.error'));
+        expect(error_text.isDisplayed()).toBe(true);
+        email_input.clear();
+      }
+    });
+
+    it('should only submit the form if the email is valid', function() {
+      var valid_emails = ['hello1@illinois.edu', 'bajekal1@illinois.edu', 'sivakum3@illinois.edu'];
+
+      for(var i = 0; i < valid_emails.length; i++) {
+        email_input.sendKeys(valid_emails[i]);
+        var error_text = element(by.css('.error'));
+        // Pause to allow RegEx to be checked
+        setTimeout(function() {
+          expect(error_text.isDisplayed()).toBe(false);
+        },1000);
+        email_input.clear();
+      }
     });
 
   });

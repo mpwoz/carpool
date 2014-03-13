@@ -1,10 +1,6 @@
 form(name="newride_form", role="form", ng-submit="createRide()")
   div(class="form-group")
     label(for="email_input") Write your @illinois.edu email here to post a ride.
-
-
-    // TODO circumvented validation for now, because illinois emails weren't receiving the message
-    //input(ng-model="email", ng-pattern="/[a-zA-Z0-9]+@illinois.edu/", type="email", name="email", class="form-control", placeholder="example@illinois.edu")
-    input(ng-model="email", ng-pattern="/[a-zA-Z0-9]+@.*/", type="email", name="email", class="form-control", placeholder="example@illinois.edu")
+    input(ng-model="email", ng-pattern="/[a-zA-Z0-9]+@illinois.edu/", type="email", name="email", class="form-control", placeholder="example@illinois.edu")
     small(class="error", ng-show="newride_form.email.$error.pattern") Your email must be an @illinois.edu email.
   button.btn.btn-lg.btn-default(type="submit") Submit
