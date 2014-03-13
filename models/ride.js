@@ -13,17 +13,22 @@ module.exports.select = function(fields, done) {
   db.select('ride', fields, done);
 };
 
+// Get a list of all rides, but only if they are confirmed
 module.exports.fetchList = function(done) {
   db.select('ride', {"confirmed": 1}, function(rows, fields) {
     done(rows);
   });
 }
 
+// Get a single ride by id
 module.exports.fetchRide = function(id, done) {
   db.select('ride', {"id": id}, function(rows, fields) {
-    // TODO check if the ride exists, if  not it's null?
-    console.log(rows);
-    done(rows);
+    if (rows.length === 0) {
+      // The ride doesn't exist, should probably return something more meaningful here
+      done({});
+    } else {
+      done(rows[0]);
+    }
   });
 };
 
