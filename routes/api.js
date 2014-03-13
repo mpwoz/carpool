@@ -12,6 +12,9 @@ exports.listRides = function (req, res) {
   });
 };
 
+// Get a single ride by id
+// TODO in the future, this will also join on rider table, feedback, etc. 
+// to get more detail for the ride page
 exports.getRide = function (req, res) {
   var id = req.params.id;
   rideModel.fetchRide(id, function(row) {

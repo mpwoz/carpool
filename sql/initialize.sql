@@ -15,12 +15,15 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`ride` (
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) );
 
-INSERT INTO `carpool_db`.`ride` (`email`) VALUES ('wozniew1@illinois.edu');
-
-
 -- Verification tokens for email confirmations
 CREATE TABLE IF NOT EXISTS `carpool_db`.`token` (
   `ride_id` INT NOT NULL,
   `token` VARCHAR(255) NOT NULL,
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP );
 
+
+-- Table for riders (passengers) for each ride
+CREATE TABLE IF NOT EXISTS `carpool_db`.`rider` (
+  `ride_id` INT NOT NULL,
+  `email` VARCHAR(255) NULL
+);
