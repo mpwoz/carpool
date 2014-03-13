@@ -19,6 +19,14 @@ module.exports.fetchList = function(done) {
   });
 }
 
+module.exports.fetchRide = function(id, done) {
+  db.select('ride', {"id": id}, function(rows, fields) {
+    // TODO check if the ride exists, if  not it's null?
+    console.log(rows);
+    done(rows);
+  });
+};
+
 module.exports.setConfirmed = function(id, done) {
   db.update('ride', {'confirmed': 1}, {'id': id}, done);
 }

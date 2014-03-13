@@ -12,6 +12,13 @@ exports.listRides = function (req, res) {
   });
 };
 
+exports.getRide = function (req, res) {
+  var id = req.params.id;
+  rideModel.fetchRide(id, function(row) {
+    res.json(row);
+  });
+};
+
 // Create a new ride and persist it to the database
 // If successful, return the id of the new row
 // Also handle creating a confirmation token and sending the email here
