@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`ride` (
   `endLocation` VARCHAR(255) NULL,
   `seats` INT NULL DEFAULT 0,
   `seatPrice` INT NULL DEFAULT 0,
+  `departureTime` VARCHAR(255) NULL,
   `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) );
 
