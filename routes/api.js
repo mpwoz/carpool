@@ -7,13 +7,12 @@ var rideModel = require('../models/ride'),
 
 exports.listRides = function (req, res) {
   rideModel.fetchList(function(rows) {
-    console.log(rows);
     res.json(rows);
   });
 };
 
 // Get a single ride by id
-// TODO in the future, this will also join on rider table, feedback, etc. 
+// TODO in the future, this will also join on rider table, feedback, etc.
 // to get more detail for the ride page
 exports.getRide = function (req, res) {
   var id = req.params.id;

@@ -8,8 +8,6 @@ angular.module('myApp.controllers', []).
       return viewLocation === $location.path();
     };
   }).
-  controller('AppCtrl', function ($scope) {
-  }).
   controller('NewRideCtrl', function ($scope, RideFactory) {
     $scope.createRide = function() {
       var email = $scope.email;
