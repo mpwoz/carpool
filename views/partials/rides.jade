@@ -1,17 +1,30 @@
-h2 Available Rides
+div(ng-controller="RideListCtrl")
+  h2 Available Rides
 
-table.table.table-striped.table-hover(ng-controller="RideListCtrl")
-  tr
-    th Start Location
-    th End Location
-    th Seats Available
-    th Price per Seat
-    th Departure Time
-    th Contact Email
-  tr(ng-repeat="ride in rides")
-    td {{ride.startLocation}}
-    td {{ride.endLocation}}
-    td {{ride.seats}}
-    td {{ride.seatPrice}}
-    td {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
-    td {{ride.email}}
+
+  form(name="filter_form", role="form")
+    div(class="form-group")
+      label(for="startLocation") Filter rides by starting location.
+      input.form-control(ng-model="rideFilter.startLocation", id="startLocation", type="text", placeholder="University of Illinois at Urbana-Champaign")
+    div(class="form-group")
+      label(for="endLocation") Filter rides by ending location.
+      input.form-control(ng-model="rideFilter.endLocation", id="endLocation", type="text", placeholder="University of Illinois at Urbana-Champaign")
+    div(class="form-group")
+      label(for="price") Filter rides by price.
+      select.form-control(ng-model="rideByPrice", ng-options="ride.seatPrice for ride in rides", id="price")
+
+  table.table.table-bordered.table-hover
+    tr
+      th(ng-click="predicate = 'startLocation'; reverse=!reverse") Start Location
+      th(ng-click="predicate = 'endLocation'; reverse=!reverse") End Location
+      th(ng-click="predicate = 'seats'; reverse=!reverse") Seats Available
+      th(ng-click="predicate = 'seatPrice'; reverse=!reverse") Price per Seat
+      th(ng-click="predicate = 'departureTime'; reverse=!reverse") Departure Time
+      th(ng-click="predicate = 'email'; reverse=!reverse") Contact Email
+    tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | MaxPrice:rideByPrice")
+      td {{ride.startLocation}}
+      td {{ride.endLocation}}
+      td {{ride.seats}}
+      td ${{ride.seatPrice}}
+      td {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
+      td {{ride.email}}

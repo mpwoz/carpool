@@ -5,7 +5,7 @@
 angular.module('myApp', [
   'myApp.controllers',
   'myApp.factories',
-//  'myApp.filters',
+  'myApp.filters',
 //  'myApp.directives'
 ]).
 config(function ($routeProvider, $locationProvider) {
