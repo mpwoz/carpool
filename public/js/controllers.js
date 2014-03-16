@@ -20,4 +20,9 @@ angular.module('myApp.controllers', []).
           });
       }
     }
+  }).
+  controller('RideListCtrl', function ($scope, RideFactory) {
+    RideFactory.getRides().then(function (rides) {
+      $scope.rides = rides.data;
+    });
   });

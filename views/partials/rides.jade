@@ -1,3 +1,15 @@
-// This will be a list of all the rides
-.row
-  h1 This will be a list of all rides
+h2 Available Rides
+
+table.table.table-striped.table-hover(ng-controller="RideListCtrl")
+  tr
+    th Start Location
+    th End Location
+    th Seats Available
+    th Price per Seat
+    th Date Created
+  tr(ng-repeat="ride in rides")
+    td {{ride.startLocation}}
+    td {{ride.endLocation}}
+    td {{ride.seats}}
+    td {{ride.seatPrice}}
+    td {{ride.created}}
