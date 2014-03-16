@@ -6,10 +6,12 @@ table.table.table-striped.table-hover(ng-controller="RideListCtrl")
     th End Location
     th Seats Available
     th Price per Seat
-    th Date Created
+    th Departure Time
+    th Contact Email
   tr(ng-repeat="ride in rides")
     td {{ride.startLocation}}
     td {{ride.endLocation}}
     td {{ride.seats}}
     td {{ride.seatPrice}}
-    td {{ride.created}}
+    td {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
+    td {{ride.email}}
