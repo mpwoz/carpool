@@ -11,8 +11,21 @@ angular.module('myApp.controllers', []).
   controller('NewRideCtrl', function ($scope, RideFactory) {
     $scope.createRide = function() {
       var email = $scope.email;
+      var startLocation = $scope.startLocation;
+      var endLocation = $scope.endLocation;
+      var seats = $scope.seats;
+      var seatPrice = $scope.seatPrice;
+      var departureTime = $scope.departureTime;
+      var ride = {
+        'email': email,
+        'startLocation': startLocation,
+        'endLocation': endLocation,
+        'seats': seats,
+        'seatPrice': seatPrice,
+        'departureTime': departureTime
+      }
       if (! $scope.newride_form.email.$error.pattern) {
-        RideFactory.newRide(email)
+        RideFactory.newRide(ride)
           .success(function(data, status, headers, config) {
             $scope.success = "Ride Created!";
           }).error(function(data, status, headers, config) {
