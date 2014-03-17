@@ -12,8 +12,8 @@ angular.module('myApp.factories', [])
        * @param  {string} email The email of the driver creating the ride
        * @return {data, status, headers, config} for success and failure callbacks
        */
-      newRide: function(email) {
-        return $http.post(urlBase, {'email': email});
+      newRide: function(ride) {
+        return $http.post(urlBase, ride);
       },
 
       /**
