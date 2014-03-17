@@ -20,7 +20,7 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/newride',
       controller: 'NewRideCtrl'
     }).
-    when('/ride/:rideID', {
+    when('/rides/:rideID', {
       templateUrl: 'partials/ride',
     }).
     otherwise({
