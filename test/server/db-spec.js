@@ -15,10 +15,17 @@ describe("rides database", function() {
     });
   });
 
-  var email = 'test@test.com';
+  var ride = {
+    'email': 'test@illinois.edu',
+    'startLocation': 'Champaign, IL',
+    'endLocation': 'Chicago, IL',
+    'seats': 4,
+    'seatPrice': 10
+  };
+  
   it("should insert a row", function() {
     var id;
-    rides.insert({ 'email': email }, function(result) {
+    rides.insert(ride, function(result) {
       console.log(result);
       id = result.insertId
       expect(result).toBeDefined();
@@ -32,7 +39,7 @@ describe("rides database", function() {
 
   it("should delete a row", function() {
     // TODO select all test@test.com, compare before/after delete
-    rides.delete({'email': email}, function(result) {
+    rides.delete(ride, function(result) {
       expect(result).toBeDefined();
     });
   });
