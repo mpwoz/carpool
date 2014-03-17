@@ -4,10 +4,25 @@ form(name="newride_form", role="form", ng-submit="createRide()")
   div(class="form-group")
     label(for="email") Write your @illinois.edu email here to post a ride.
     input.form-control(ng-model="email", ng-pattern="/[a-zA-Z0-9]+@illinois.edu/", type="email", id="email", name="email", placeholder="example@illinois.edu")
-    input.form-control(ng-model="startLocation", type="text", id="startLocation", name="startLocation", placeholder="Champaign, IL")
-    input.form-control(ng-model="endLocation", type="text", id="endLocation", name="endLocation", placeholder="Gurnee, IL")
-    input.form-control(ng-model="seats", id="seats", name="seats", placeholder=6)
-    input.form-control(ng-model="seatPrice", id="seatPrice", name="seatPrice", placeholder=10)
-    input.form-control(ng-model="departureTime", id="departureTime", name="departureTime")
     small(class="error", ng-show="newride_form.email.$error.pattern") Your email must be an @illinois.edu email.
+    br
+    label(for="startLocation") Where are you leaving from?
+    input.form-control(ng-model="startLocation", ng-pattern="/^[A-Za-z]+,[ ]?[A-Za-z]{2,}$/", type="text", id="startLocation", name="startLocation", placeholder="Champaign, IL")
+    small(class="error", ng-show="newride_form.startLocation.$error.pattern") Please enter a valid City, State combination.
+    br
+    label(for="endLocation") Where are you going to?
+    input.form-control(ng-model="endLocation", ng-pattern="/^[A-Za-z]+,[ ]?[A-Za-z]{2,}$/", type="text", id="endLocation", name="endLocation", placeholder="Gurnee, IL")
+    small(class="error", ng-show="newride_form.endLocation.$error.pattern") Please enter a valid City, State combination.
+    br
+    label(for="seats") How many seats do you have available?
+    input.form-control(ng-model="seats", id="seats", name="seats", placeholder=4)
+    small(class="error", ng-show="seats<1") You must have at least one seat available.
+    br
+    label(for="seatPrice") How much do you want for each seat?
+    input.form-control(ng-model="seatPrice", id="seatPrice", name="seatPrice", placeholder=10)
+    small(class="error", ng-show="seatPrice<0") You cannot have a negative price.
+    br
+    label(for="departureTime") When are you leaving?
+    input.form-control(ng-model="departureTime", id="departureTime", name="departureTime")
+
   button.btn.btn-lg.btn-default(type="submit") Submit

@@ -26,6 +26,11 @@ module.exports.delete = function(table, fields, done) {
 }
 
 module.exports.insert = function(table, fields, done) {
+  if(table=='ride') {
+    if(!validateRideInsert(fields)) {
+      done(null);
+    }
+  }
   connection.query('INSERT INTO ?? SET ?', [table, fields], function(err, result) {
     if (err) console.log(err);
     done(result);
@@ -47,4 +52,14 @@ module.exports.selectAll = function(table, done) {
     if (err) console.log(err);
     done(rows, fields);
   });
+}
+
+function validateRideInsert(fields) {
+  var cityPattern = /^[A-Za-z]+,[ ]?[A-Za-z]{2,}$/;
+  var emailPattern = /[a-zA-Z0-9]+@illinois.edu/;
+  return  (fields.startLocation.match(cityPattern).length !== 0) &&
+          (fields.endLocation.match(cityPattern).length !== 0) &&
+          (fields.email.match(emailPattern).length !== 0) &&
+          (fields.seats > 0) &&
+          (fields.seatPrice >= 0);
 }

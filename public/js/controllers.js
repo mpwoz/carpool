@@ -24,7 +24,8 @@ angular.module('myApp.controllers', []).
         'seatPrice': seatPrice,
         'departureTime': departureTime
       }
-      if (! $scope.newride_form.email.$error.pattern) {
+      if (! $scope.newride_form.email.$error.pattern && ! $scope.newride_form.startLocation.$error.pattern &&
+          ! $scope.newride_form.endLocation.$error.pattern && seats>0 && seatPrice>=0) {
         RideFactory.newRide(ride)
           .success(function(data, status, headers, config) {
             $scope.success = "Ride Created!";

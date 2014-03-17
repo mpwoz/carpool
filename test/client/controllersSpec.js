@@ -17,7 +17,7 @@ describe('myApp.controllers', function() {
     beforeEach(inject(function($rootScope, $controller, RideFactory) {
       scope = $rootScope.$new();
       factory = RideFactory;
-      spyOn(factory, 'newRide');
+      spyOn(factory, 'newRide').andCallThrough();
       ctrl = $controller('NewRideCtrl', {$scope: scope, RideFactory: factory});
     }));
 
@@ -37,9 +37,34 @@ describe('myApp.controllers', function() {
           expect(factory.newRide).not.toHaveBeenCalled();
         }
       });
-
     });
 
+    describe('createRide', function() {
+      it('should not POST to backend if fields are invalid', function() {
+        scope.newride_form = {
+          'email': ["", false],
+          'startLocation': ["", false],
+          'endLocation': ["", false],
+          'seats': 0,
+          'seatPrice': 0
+        }
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 9; i++ ) {
+          scope.newride_form.email[0] += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        scope.email += '@illinois.edu';
+        scope.newride_form.email.$error = {pattern: false};
+        scope.startLocation = 'Champaign, IL2';
+        scope.newride_form.startLocation.$error = {pattern: true};
+        scope.endLocation = 'Chicago, IL2';
+        scope.newride_form.endLocation.$error = {pattern: true};
+        scope.seats = 4;
+        scope.seatPrice = 10;
+        scope.createRide();
+        expect(factory.newRide).not.toHaveBeenCalled();
+      });
+    });
   });
 
 
