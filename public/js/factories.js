@@ -22,8 +22,11 @@ angular.module('myApp.factories', [])
        */
       getRides: function() {
         return $http.get(urlBase);
-      }
+      },
 
       // Get a single
+      getRide: function(ride_id) {
+        return $http.get(urlBase + '/' + ride_id);
+      }
     }
   });
