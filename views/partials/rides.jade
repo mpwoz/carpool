@@ -21,7 +21,7 @@ div(ng-controller="RideListCtrl")
       th(ng-click="predicate = 'seatPrice'; reverse=!reverse") Price per Seat
       th(ng-click="predicate = 'departureTime'; reverse=!reverse") Departure Time
       th(ng-click="predicate = 'email'; reverse=!reverse") Contact Email
-    tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | MaxPrice:rideByPrice")
+    tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | maxPrice:rideByPrice")
       td {{ride.startLocation}}
       td {{ride.endLocation}}
       td {{ride.seats}}

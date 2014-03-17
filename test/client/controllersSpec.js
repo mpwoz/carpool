@@ -38,20 +38,6 @@ describe('myApp.controllers', function() {
         }
       });
 
-      it('should POST to backend if email is valid', function() {
-        var valid_emails = ['hello1@illiois.edu', 'bajekal1@illinois.edu', 'sivakum3@illinois.edu'];
-
-        scope.newride_form = {'email': valid_emails[0]};
-        scope.newride_form.email = {};
-        scope.newride_form.email.$error = {email: false, pattern: false};
-
-        for(var i = 0; i < valid_emails.length; i++) {
-          scope.email = valid_emails[i];
-          scope.createRide();
-          expect(factory.newRide).toHaveBeenCalled();
-        }
-      });
-
     });
 
   });

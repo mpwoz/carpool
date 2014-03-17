@@ -3,7 +3,7 @@
 /* Filters */
 
 angular.module('myApp.filters', [])
-  .filter('MaxPrice', function() {
+  .filter('maxPrice', function() {
     return function (rides, rideByPrice) {
       var matchedRides = [];
       angular.forEach(rides, function(ride) {
