@@ -25,4 +25,9 @@ angular.module('myApp.controllers', []).
     RideFactory.getRides().then(function (rides) {
       $scope.rides = rides.data;
     });
+  }).
+  controller('RideDetailCtrl', function($scope, $routeParams, RideFactory) {
+    RideFactory.getRide($routeParams.rideID).then(function (ride) {
+      $scope.ride = ride.data;
+    });
   });

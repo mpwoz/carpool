@@ -20,6 +20,9 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/newride',
       controller: 'NewRideCtrl'
     }).
+    when('/ride/:rideID', {
+      templateUrl: 'partials/ride',
+    }).
     otherwise({
       redirectTo: '/home'
     });
