@@ -17,7 +17,7 @@ describe('myApp.controllers', function() {
     beforeEach(inject(function($rootScope, $controller, RideFactory) {
       scope = $rootScope.$new();
       factory = RideFactory;
-      spyOn(factory, 'newRide').andCallThrough();
+      spyOn(factory, 'newRide');
       ctrl = $controller('NewRideCtrl', {$scope: scope, RideFactory: factory});
     }));
 
