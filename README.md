@@ -45,14 +45,20 @@ To view the site, visit [http://cps-carpool.herokuapp.com](http://cps-carpool.he
 
 #### Unit Tests
 
-Run the `test.sh` script to run all server and client unit tests.
+Run the `test-client.sh` script to run all client unit tests.
 
-`./scripts/test.sh`
+`./scripts/test-client.sh`
+
+Run the `test-server.sh` script to run all server unit tests.
+
+`./scripts/test-server.sh`
 
 #### End-To-End Tests
 
-Run the `e2e-test.sh` script to run all end-to-end tests.
+Start the application locally and run the `e2e-test.sh` script to run all end-to-end tests.
 
+`./scripts/start-server.sh`
+In a different terminal window or tab:
 `./scripts/e2e-test.sh`
 
 
