@@ -32,12 +32,13 @@ describe("server", function() {
                         "comment": "good ride",
                         "score": 1
                         };
-    request.post('http://localhost:8000/api/feedback/',{form:{"from": "wyang15@illinois.edu",
-                        "to": "wozniew1@illinois.edu",
-                        "ride_id": 1,
-                        "comment": "good ride",
-                        "score": 1
-                        }}, function(error, response, body) {
+    request(
+      { 
+        method: 'POST', 
+        uri: 'http://localhost:8000/api/feedback/wozniew1@illinois.edu', 
+        json: feedbackJSON
+      }, 
+      function(error, response, body) {
 
       done();
     });
