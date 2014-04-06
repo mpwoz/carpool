@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`rider` (
   `ride_id` INT NOT NULL,
   `email` VARCHAR(255) NOT NULL);
 
+-- Table for feedback for each ride. From and to are emails for corresponding users
 CREATE TABLE IF NOT EXISTS `carpool_db`.`feedback` (
   `from` VARCHAR(255) NOT NULL,
   `to` VARCHAR(255) NOT NULL,
