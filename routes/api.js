@@ -25,6 +25,13 @@ exports.getRide = function (req, res) {
   });
 };
 
+exports.getRidesByUser = function(req, res) {
+  var user = req.params.netID+"@illinois.edu";
+  rideModel.fetchRidesByUser(user, function(rides) {
+    res.json(rides);
+  });
+};
+
 // Create a new ride and persist it to the database
 // If successful, return the id of the new row
 // Also handle creating a confirmation token and sending the email here

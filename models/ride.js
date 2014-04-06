@@ -37,6 +37,16 @@ module.exports.fetchRide = function(id, done) {
   });
 };
 
+module.exports.fetchRidesByUser = function(user, done) {
+  db.select('ride', {"email": user}, function(rows, fields) {
+    if(rows.length === 0) {
+      done({});
+    } else {
+      done(rows);
+    }
+  });
+};
+
 module.exports.setConfirmed = function(id, done) {
   db.update('ride', {'confirmed': 1}, {'id': id}, done);
 };

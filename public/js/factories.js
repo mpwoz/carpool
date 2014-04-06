@@ -24,9 +24,21 @@ angular.module('myApp.factories', [])
         return $http.get(urlBase);
       },
 
+      getRidesByUser: function(netID) {
+        return $http.get('/api/userrides/' + netID);
+      },
+
       // Get a single
       getRide: function(ride_id) {
         return $http.get(urlBase + '/' + ride_id);
+      }
+    }
+  })
+  .factory('FeedbackFactory', function($http) {
+    var urlBase = '/api/feedback';
+    return {
+      getFeedback: function(user) {
+        return $http.get(urlBase+'/'+user);
       }
     }
   });

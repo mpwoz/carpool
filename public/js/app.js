@@ -23,6 +23,9 @@ config(function ($routeProvider, $locationProvider) {
     when('/rides/:rideID', {
       templateUrl: 'partials/ride',
     }).
+    when('/user/:netID', {
+      templateUrl: 'partials/profile',
+    }).
     otherwise({
       redirectTo: '/home'
     });
