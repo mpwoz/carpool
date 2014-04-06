@@ -51,9 +51,6 @@ app.get('/api/feedback/:to', api.getFeedback);
 app.post('/api/feedback', api.setFeedback);
 app.post('/api/feedback/:to', api.setFeedback);
 
-// redirect all others to the index (HTML5 history)
-app.get('*', pages.index);
-
 
 /**
  * Start Server
