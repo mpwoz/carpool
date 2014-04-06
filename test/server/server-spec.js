@@ -12,9 +12,7 @@ describe("server", function() {
       done();
     });
   });
-});
 
-describe("server", function() {
   it("should fetch a user's feedback", function(done) {
     request.get('http://localhost:8000/api/feedback/wozniew1@illinois.edu', function(error, response, body) {
       body = JSON.parse(body);
@@ -22,7 +20,7 @@ describe("server", function() {
       expect(body[0].from).toEqual('gli24@illinois.edu');
       expect(body[0].score).toEqual(5);
       expect(body[1].from).toEqual('bajekal1@illinois.edu');
-      expect(body[1].score).toEqual(3);
+      expect(body[1].score).toEqual(4);
       done();
     });
   });
