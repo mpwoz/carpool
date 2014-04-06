@@ -51,8 +51,8 @@ var validateRideInsert = function(fields) {
           (fields.seatPrice >= 0);
 }
 
-module.exports.getRiders = function(done) {
-  db.select('rider', function(rows, fields) {
+module.exports.getRiders = function(ride_id, done) {
+  db.select('rider', {ride_id: ride_id}, function(rows, fields) {
     done(
       //Pull out just the email field from each rider object
       rows.map(function(x) {

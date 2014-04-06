@@ -16,7 +16,7 @@ exports.listRides = function (req, res) {
 // to get more detail for the ride page
 exports.getRide = function (req, res) {
   var id = req.params.id;
-  rideModel.fetchRide(id, function(rides) {
+  rideModel.fetchRide(id, function(ride) {
     rideModel.getRiders(id, function(riders) {
       ride.riders = riders; // Add list of rider emails to the ride object
       res.json(ride);
