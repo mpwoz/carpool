@@ -2,6 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 var rideModel = require('../models/ride'),
+    feedbackModel = require('../models/feedback'),
     tokenModel = require('../models/token'),
     emailer = require('../email/email');
 
@@ -69,3 +70,9 @@ exports.addRider = function (req, res) {
   });
 };
 
+exports.getFeedback = function(req, res) {
+  var id = req.params.to;
+  feedbackModel.getFeedbackForEmail(id, function(feedback) {
+    res.json(feedback);
+  });
+};

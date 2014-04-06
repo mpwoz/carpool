@@ -23,7 +23,7 @@ module.exports.fetchList = function(done) {
   db.select('ride', {"confirmed": 1}, function(rows, fields) {
     done(rows);
   });
-}
+};
 
 // Get a single ride by id
 module.exports.fetchRide = function(id, done) {
@@ -39,7 +39,7 @@ module.exports.fetchRide = function(id, done) {
 
 module.exports.setConfirmed = function(id, done) {
   db.update('ride', {'confirmed': 1}, {'id': id}, done);
-}
+};
 
 var validateRideInsert = function(fields) {
   var cityPattern = /^[A-Za-z]+,[ ]?[A-Za-z]{2,}$/;
@@ -60,8 +60,8 @@ module.exports.getRiders = function(ride_id, done) {
       })
     );
   });
-}
+};
 
 module.exports.addRider = function(fields, done) {
   db.insert('rider', fields, done);
-}
+};
