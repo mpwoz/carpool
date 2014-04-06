@@ -54,7 +54,7 @@ var validateRideInsert = function(fields) {
 module.exports.getRiders = function(done) {
   db.select('rider', function(rows, fields) {
     done(
-      // Pull out just the email field from each rider object
+      //Pull out just the email field from each rider object
       rows.map(function(x) {
         return x.email;
       })

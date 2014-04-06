@@ -26,7 +26,6 @@ describe("rides database", function() {
   it("should insert a row", function() {
     var id;
     rides.insert(ride, function(result) {
-      console.log(result);
       id = result.insertId
       expect(result).toBeDefined();
     });
@@ -46,4 +45,5 @@ describe("rides database", function() {
 
 
 });
+
 

@@ -11,8 +11,8 @@ div(ng-controller="RideDetailCtrl")
 
   h4 Riders
   table.table.table-bordered.table-hover
-    tr(ng-repeat="email in ride.riders")
-      td {{email}}
+    tr(ng-repeat="riderEmail in ride.riders")
+      td {{riderEmail}}
 
   h5 Contact {{ride.email}} for more information
   br
