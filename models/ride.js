@@ -62,6 +62,6 @@ module.exports.getRiders = function(done) {
   });
 }
 
-mudule.exports.addRider = function(fields, done) {
+module.exports.addRider = function(fields, done) {
   db.insert('rider', fields, done);
 }

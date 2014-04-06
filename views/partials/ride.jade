@@ -8,6 +8,12 @@ div(ng-controller="RideDetailCtrl")
   h4 Seat Prices: {{ride.seatPrice | currency : symbol : amount}}
   h4 Departure Time: {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
   br
+
+  h4 Riders
+  table.table.table-bordered.table-hover
+    tr(ng-repeat="email in ride.riders")
+      td {{email}}
+
   h5 Contact {{ride.email}} for more information
   br
   a(href='/rides') Back to rides
