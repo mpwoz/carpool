@@ -40,6 +40,16 @@ angular.module('myApp.controllers', []).
       $scope.rides = rides.data;
     });
   }).
+  controller('UserProfileCtrl', function ($scope, $routeParams, RideFactory, FeedbackFactory) {
+    var user = $routeParams.netID;
+    $scope.user = user;
+    RideFactory.getRidesByUser(user).then(function (rides) {
+      $scope.rides = rides.data;
+    });
+    FeedbackFactory.getFeedback(user+'@illinois.edu').then(function(feedbacks) {
+      $scope.feedbacks = feedbacks.data;
+    });
+  }).
   controller('RideDetailCtrl', function($scope, $routeParams, RideFactory) {
     RideFactory.getRide($routeParams.rideID).then(function (ride) {
       $scope.ride = ride.data;

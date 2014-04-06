@@ -1,0 +1,28 @@
+div(ng-controller="UserProfileCtrl")
+  h2 {{user}}'s Rides
+  table.table.table-bordered.table-hover
+    tr
+      th(ng-click="predicate = 'startLocation'; reverse=!reverse") Start Location
+      th(ng-click="predicate = 'endLocation'; reverse=!reverse") End Location
+      th(ng-click="predicate = 'seats'; reverse=!reverse") Seats Available
+      th(ng-click="predicate = 'seatPrice'; reverse=!reverse") Price per Seat
+      th(ng-click="predicate = 'departureTime'; reverse=!reverse") Departure Time
+      th(ng-click="predicate = 'email'; reverse=!reverse") Contact Email
+    tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | maxPrice:rideByPrice")
+      td {{ride.startLocation}}
+      td {{ride.endLocation}}
+      td {{ride.seats}}
+      td ${{ride.seatPrice}}
+      td {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
+      td {{ride.email}}
+
+  h2 {{user}}'s Feedback
+  table.table.table-bordered.table-hover
+    tr
+      th(ng-click="predicate = 'score'; reverse=!reverse") Score
+      th(ng-click="predicate = 'from'; reverse=!reverse") From
+      th(ng-click="predicate = 'comment'; reverse=!reverse") Comment
+    tr(ng-repeat="feedback in feedbacks | orderBy:predicate:reverse")
+      td {{feedback.score}}
+      td {{feedback.from}}
+      td {{feedback.comment}}
