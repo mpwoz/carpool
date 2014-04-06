@@ -47,6 +47,7 @@ app.post('/api/rides', api.newRide);
 app.get('/api/rides/:id', api.getRide);
 app.post('/api/rides/:id', api.addRider); // POST for a specific ride id to signup for a ride
 app.get('/api/verify/:token', api.verify);
+app.get('/api/feedback/:to', api.getFeedback);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', pages.index);

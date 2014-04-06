@@ -13,3 +13,7 @@ INSERT INTO `carpool_db`.`rider` (`ride_id`, `email`) VALUES
   (1, 'gli24@illinois.edu'),
   (1, 'bajekal1@illinois.edu'),
   (1, 'wyang15@illinois.edu');
+
+INSERT INTO `carpool_db`.`feedback` (`from`, `to`, `ride_id`, `comment`, `score`) VALUES
+  ('gli24@illinois.edu', 'wozniew1@illinois.edu', 1, 'good ride!', 5),
+  ('bajekal1@illinois.edu', 'wozniew1@illinois.edu', 1, 'hello!', 4);
