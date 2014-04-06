@@ -73,7 +73,7 @@ exports.verify = function (req, res) {
 exports.addRider = function (req, res) {
   // TODO serverside validation
   rideModel.addRider(req.body, function(result) {
-    // TODO verify email, similar to ride creation
+    res.send(200, {'success': true});
   });
 };
 
