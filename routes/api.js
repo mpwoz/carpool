@@ -18,8 +18,7 @@ exports.getRide = function (req, res) {
   var id = req.params.id;
   rideModel.fetchRide(id, function(ride) {
     rideModel.getRiders(id, function(riders) {
-      // TODO
-      row.riders = riders;
+      ride.riders = riders; // Add list of rider emails to the ride object
       res.json(ride);
     });
   });

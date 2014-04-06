@@ -50,3 +50,18 @@ var validateRideInsert = function(fields) {
           (fields.seats > 0) &&
           (fields.seatPrice >= 0);
 }
+
+module.exports.getRiders = function(done) {
+  db.select('rider', function(rows, fields) {
+    done(
+      // Pull out just the email field from each rider object
+      rows.map(function(x) {
+        return x.email;
+      })
+    );
+  });
+}
+
+mudule.exports.addRider = function(fields, done) {
+  db.insert('rider', fields, done);
+}
