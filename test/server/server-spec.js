@@ -24,24 +24,22 @@ describe("server", function() {
       done();
     });
   });
-});
 
-/*describe("server", function() {
   it("should add a user's feedback", function(done) {
-  	var feedbackJSON = {"from": "wyang15@illinois.edu",
-  											"to": "wozniew1@illinois.edu",
-  											"ride_id": 1,
-  											"comment": "good ride",
-  											"score": 1
-  											};
+    var feedbackJSON = {"from": "wyang15@illinois.edu",
+                        "to": "wozniew1@illinois.edu",
+                        "ride_id": 1,
+                        "comment": "good ride",
+                        "score": 1
+                        };
     request.post('http://localhost:8000/api/feedback/',{form:{"from": "wyang15@illinois.edu",
-  											"to": "wozniew1@illinois.edu",
-  											"ride_id": 1,
-  											"comment": "good ride",
-  											"score": 1
-  											}}, function(error, response, body) {
+                        "to": "wozniew1@illinois.edu",
+                        "ride_id": 1,
+                        "comment": "good ride",
+                        "score": 1
+                        }}, function(error, response, body) {
 
       done();
     });
   });
-});*/
+});
