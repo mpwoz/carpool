@@ -28,9 +28,24 @@ angular.module('myApp.factories', [])
         return $http.get('/api/userrides/' + netID);
       },
 
-      // Get a single
+      /**
+       * Get a single ride
+       * @param  {int} ride_id the ID of the ride
+       * @return {future}          future object of the ride
+       */
       getRide: function(ride_id) {
         return $http.get(urlBase + '/' + ride_id);
+      },
+
+      /**
+       * Signup for a ride
+       * @param  {int} ride_id    the ID of the ride
+       * @param  {string} user_email The email of the rider signing up for the ride
+       * @return {data, status, headers, config} for success and failure callbacks
+       */
+      signup: function(ride_id, user_email) {
+        var submission = {'ride_id': ride_id, 'email': user_email};
+        return $http.post(urlBase + '/' + ride_id, submission);
       }
     }
   })

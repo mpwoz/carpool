@@ -30,15 +30,57 @@ angular.module('myApp.controllers', []).
           .success(function(data, status, headers, config) {
             $scope.success = "Ride Created!";
           }).error(function(data, status, headers, config) {
-            $scope.fail = "Failed to create ride :(";
+            $scope.fail = "Failed to create ride.";
           });
       }
     }
   }).
-  controller('RideListCtrl', function ($scope, RideFactory) {
+  controller('SignupModalCtrl', function ($scope, $modalInstance, RideFactory, ride_id) {
+
+    $scope.submit = function (email) {
+
+      RideFactory.signup(ride_id, email)
+        .success(function(data, status, headers, config) {
+          $scope.success = true;
+          $scope.ride_id = ride_id;
+          $modalInstance.close($scope.success);
+        }).error(function(data, status, headers, config) {
+          $scope.success = false;
+          $modalInstance.close($scope.success);
+        });
+    };
+
+  }).
+  controller('RideListCtrl', function ($scope, $modal, $location, RideFactory) {
     RideFactory.getRides().then(function (rides) {
       $scope.rides = rides.data;
     });
+
+    $scope.goToRide = function(ride_id) {
+        $location.path('/rides/' + ride_id);
+    }
+
+    $scope.openModal = function (ride_id) {
+      var modalInstance = $modal.open({
+        templateUrl: 'partials/rideSignupModal',
+        controller: 'SignupModalCtrl',
+        resolve: {
+          ride_id: function () {
+            return ride_id;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (is_success) {
+        if (is_success) {
+          $scope.success = "Signed up for ride successfully.";
+        }
+        else {
+          $scope.fail = "Ride signup failed.";
+        }
+      });
+    };
+
   }).
   controller('UserProfileCtrl', function ($scope, $routeParams, RideFactory, FeedbackFactory) {
     var user = $routeParams.netID;

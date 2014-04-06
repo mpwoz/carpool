@@ -6,6 +6,7 @@ angular.module('myApp', [
   'myApp.controllers',
   'myApp.factories',
   'myApp.filters',
+  'ui.bootstrap'
 //  'myApp.directives'
 ]).
 config(function ($routeProvider, $locationProvider) {
