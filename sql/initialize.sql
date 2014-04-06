@@ -34,4 +34,5 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`feedback` (
   `to` VARCHAR(255) NOT NULL,
   `ride_id` INT NOT NULL,
   `comment` VARCHAR(255) NULL,
-  `score` INT NULL);
+  `score` INT NULL,
+  PRIMARY KEY (`from`, `to`, `ride_id`));
