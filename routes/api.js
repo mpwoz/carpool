@@ -16,8 +16,12 @@ exports.listRides = function (req, res) {
 // to get more detail for the ride page
 exports.getRide = function (req, res) {
   var id = req.params.id;
-  rideModel.fetchRide(id, function(row) {
-    res.json(row);
+  rideModel.fetchRide(id, function(ride) {
+    rideModel.getRiders(id, function(riders) {
+      // TODO
+      row.riders = riders;
+      res.json(ride);
+    });
   });
 };
 
@@ -58,3 +62,11 @@ exports.verify = function (req, res) {
     });
   });
 };
+
+exports.addRider = function (req, res) {
+  // TODO serverside validation
+  rideModel.addRider(req.body, function(result) {
+    // TODO verify email, similar to ride creation
+  });
+};
+

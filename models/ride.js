@@ -6,7 +6,11 @@ module.exports.delete = function(fields, done) {
 
 // Insert a ride with the given fields
 module.exports.insert = function(fields, done) {
-  db.insert('ride', fields, done);
+  if(!validateRideInsert(fields)) {
+    done(null); // TODO pass an error
+  } else {
+    db.insert('ride', fields, done);
+  }
 };
 
 // Select a ride by the JSON fields, which are translated into a WHERE clause
@@ -35,4 +39,14 @@ module.exports.fetchRide = function(id, done) {
 
 module.exports.setConfirmed = function(id, done) {
   db.update('ride', {'confirmed': 1}, {'id': id}, done);
+}
+
+var validateRideInsert = function(fields) {
+  var cityPattern = /^[A-Za-z]+,[ ]?[A-Za-z]{2,}$/;
+  var emailPattern = /[a-zA-Z0-9]+@illinois.edu/;
+  return  (fields.startLocation.match(cityPattern).length !== 0) &&
+          (fields.endLocation.match(cityPattern).length !== 0) &&
+          (fields.email.match(emailPattern).length !== 0) &&
+          (fields.seats > 0) &&
+          (fields.seatPrice >= 0);
 }
