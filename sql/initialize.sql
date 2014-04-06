@@ -26,5 +26,13 @@ CREATE TABLE IF NOT EXISTS `carpool_db`.`token` (
 -- Table for riders (passengers) for each ride
 CREATE TABLE IF NOT EXISTS `carpool_db`.`rider` (
   `ride_id` INT NOT NULL,
-  `email` VARCHAR(255) NULL
+  `email` VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS 'carpool_db', 'feedback' (
+  'from' VARCHAR(255) NOT NULL,
+  'to' VARCHAR(255) NOT NULL,
+  'ride_id' INT NOT NULL,
+  'comment' VARCHAR(255) NULL,
+  'score' INT NULL
 );
