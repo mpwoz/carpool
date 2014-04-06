@@ -77,9 +77,16 @@ exports.addRider = function (req, res) {
   });
 };
 
+//gets all the feedback for a specific email.
 exports.getFeedback = function(req, res) {
   var id = req.params.to;
   feedbackModel.getFeedbackForEmail(id, function(feedback) {
     res.json(feedback);
+  });
+};
+
+exports.setFeedback = function(req, res){
+  feedbackModel.setFeedback(req.body, function(result){
+
   });
 };
