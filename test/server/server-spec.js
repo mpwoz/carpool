@@ -30,21 +30,17 @@ describe("server", function() {
                         "to": "wozniew1@illinois.edu",
                         "ride_id": 1,
                         "comment": "good ride",
-                        "score": 1
-                        };
-    request(
-      { 
-        method: 'POST', 
-        uri: 'http://localhost:8000/api/feedback/wozniew1@illinois.edu', 
-        json: feedbackJSON
-      }, 
-      function(error, response, body) {
-
-      done();
+                        "score": 1 };
+    request({ 
+      method: 'POST', 
+      uri: 'http://localhost:8000/api/feedback/wozniew1@illinois.edu', 
+      json: feedbackJSON
     });
+    done();
   });
 });
 
+/*
 describe("server", function() {
 	it("should get a list of user rides", function(done) {
 		request.get('http://localhost:8000/api/userrides/wozniew1', function(error, response, body) {
@@ -55,3 +51,4 @@ describe("server", function() {
 		})
 	});
 });
+*/

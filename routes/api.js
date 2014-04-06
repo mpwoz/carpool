@@ -87,6 +87,7 @@ exports.getFeedback = function(req, res) {
 
 exports.setFeedback = function(req, res){
   feedbackModel.setFeedback(req.body, function(result){
-
+    //console.log(result);
+    res.send(200, {'success': true});
   });
 };
