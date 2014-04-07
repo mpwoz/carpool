@@ -33,8 +33,8 @@ div(ng-controller="RideListCtrl")
       td {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
       td {{ride.email}}
       td
-        button.btn.btn-default(ng-click="openModal(ride.id)") Signup
+        button.btn.btn-info(ng-click="openModal(ride.id)") Signup
       td
-        button.btn.btn-default(ng-click="goToRide(ride.id)") Go To Ride
+        button.btn.btn-warning(ng-click="goToRide(ride.id)") Go To Ride
 
 

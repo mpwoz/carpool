@@ -161,3 +161,37 @@ body {
     width: 700px;
   }
 }
+
+
+
+
+/*
+ *  Color fixes, hacks, etc. 
+ *    Remove these when we actually make a real style for the site
+ */
+
+// Modal text color fix
+.modal-header, .modal-body, .modal-footer {
+  color: #555;
+  text-shadow: none;
+}
+
+// Color fixes for table buttons/text
+tr:hover {
+  color: #555;
+  background: #555;
+}
+tr .btn {
+  color: #000;
+}
+
+// Error messages are red(dish)
+.error {
+  color: #ED5565;
+}
+
+// Front page buttons (spacing between them)
+.btn-large {
+  margin: 10px;
+}
+
