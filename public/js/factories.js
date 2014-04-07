@@ -52,6 +52,10 @@ angular.module('myApp.factories', [])
   .factory('FeedbackFactory', function($http) {
     var urlBase = '/api/feedback';
     return {
+      addFeedback: function(feedbackinfo) {
+        return $http.post(urlBase, feedbackinfo);
+      },
+
       getFeedback: function(user) {
         return $http.get(urlBase+'/'+user);
       }

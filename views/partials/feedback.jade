@@ -1,0 +1,21 @@
+div#messages.alert.alert-success(ng-show="success") {{success}}
+div#missages.alert.alert-danger(ng-show="fail") {{fail}}
+form(name="feedback_form", role="form", ng-submit="addFeedback()")
+  div(class="form-group")
+    label(for="fromUser") Email of person giving feedback.
+    input.form-control(ng-model="fromUser", type="email", id="fromUser", name="fromUser")
+    br
+    label(for="toUser") Email of person receiving feedback.
+    input.form-control(ng-model="toUser", type="email", id="toUser", name="toUser")
+    br
+    label(for="rideId") Ride id of the specific ride.
+    input.form-control(ng-model="rideId", id="rideId", name="rideId")
+    br
+    label(for="comment") Comment on the ride and/or user.
+    input.form-control(ng-model="comment", type="text", id="comment", name="comment")
+    br
+    label(for="score") Give a numerical score.
+    input.form-control(ng-model="score", id="score", name="score")
+
+  button.btn.btn-lg.btn-default(type="submit") Submit
+  h2 Give Feedback

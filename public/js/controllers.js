@@ -106,4 +106,30 @@ angular.module('myApp.controllers', []).
     RideFactory.getRide($routeParams.rideID).then(function (ride) {
       $scope.ride = ride.data;
     });
+  }).
+  controller('FeedbackCtrl', function($scope, FeedbackFactory) {
+    $scope.addFeedback = function() {
+      var fromUser = $scope.fromUser;
+      var toUser = $scope.toUser;
+      var score = $scope.score;
+      var comment = $scope.comment;
+      var rideId = $scope.rideId;
+
+      var feedback = {
+        'from': fromUser,
+        'to': toUser,
+        'ride_id': rideId,
+        'comment': comment,
+        'score': score
+      }
+
+      if (true) {
+        FeedbackFactory.addFeedback(feedback)
+          .success(function(data, status, headers, config) {
+            $scope.success = "Feedback Submitted";
+          }).error(function(data, status, headers, config) {
+            $scope.fail = "Feedback information was not correct.";
+          });
+      }
+    }
   });

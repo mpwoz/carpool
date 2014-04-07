@@ -27,7 +27,10 @@ config(function ($routeProvider, $locationProvider) {
     when('/user/:netID', {
       templateUrl: 'partials/profile',
     }).
-    otherwise({
+    when('/feedback', {
+      templateUrl: 'partials/feedback',
+      controller: 'FeedbackCtrl'
+    }).otherwise({
       redirectTo: '/home'
     });
 
