@@ -42,6 +42,37 @@ describe('carpool', function() {
         email_input.clear();
       }
     });
+  });
 
+  describe('Signing up for a ride', function() {
+    beforeEach(function() {
+      browser.get('/rides');
+    });
+
+    it('should find a ride from Naperville and sign up for it', function() {
+      var startlocation = element(by.id('startLocation'));
+      startlocation.sendKeys("naperville");
+
+      var buttons = element.all(by.css('.btn'));
+      expect(buttons.count()).toBe(2);
+      buttons.first().click();
+
+      var modalWindow = element(by.css('.modal-dialog'));
+      expect(modalWindow.isDisplayed()).toBe(true);
+
+      var emailInput = element(by.model('email'));
+      emailInput.sendKeys("test2@illinois.edu");
+      buttons = element.all(by.css('.btn'));
+      buttons.last().click();
+
+      expect(element(by.id('messages')).getText()).toEqual('Signed up for ride successfully.');
+      buttons = element.all(by.css('.btn'));
+      buttons.last().click();
+
+      var signedUpRiders = element.all(by.repeater('riderEmail in ride.riders'));
+      signedUpRiders.then(function(arr){
+        expect(arr[arr.length-1].getText()).toEqual("test2@illinois.edu");
+      });
+    });
   });
 });
