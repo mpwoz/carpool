@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
+angular.module('myApp.controllers', ['ui.bootstrap']).
   controller('NavCtrl', function ($scope, $location) {
     $scope.isActive = function(viewLocation) {
       return viewLocation === $location.path();
@@ -25,7 +25,7 @@ angular.module('myApp.controllers', []).
       var isValidLocations = isValidStartLoc && isValidEndLoc;
       var seatsAvailable = seats > 0;
       var priceIsValid = seatPrice >= 0;
-      
+
       var ride = {
         'email': email,
         'startLocation': startLocation,
@@ -61,6 +61,7 @@ angular.module('myApp.controllers', []).
   controller('RideListCtrl', function ($scope, $modal, $location, RideFactory) {
     RideFactory.getRides().then(function (rides) {
       $scope.rides = rides.data;
+      $scope.globalRides = rides.data;
     });
 
     $scope.goToRide = function(ride_id) {
@@ -129,4 +130,57 @@ angular.module('myApp.controllers', []).
           });
       }
     }
+  }).
+  controller('DatepickerDemoCtrl', function($scope) {
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.showWeeks = true;
+    $scope.toggleWeeks = function () {
+      $scope.showWeeks = ! $scope.showWeeks;
+    };
+
+    $scope.clear = function () {
+      $scope.dt = null;
+    };
+
+    $scope.chooseDate = function() {
+      var date1 = new Date($scope.dt);
+      var matchedRides = [];
+      for(var i=0; i<$scope.globalRides.length; i++) {
+        var date = new Date($scope.globalRides[i].departureTime);
+        if (date1.getDate() === date.getDate() && date1.getMonth() === date.getMonth()) {
+          matchedRides.push($scope.globalRides[i]);
+        }
+      }
+      $scope.rides = matchedRides;
+      $scope.$apply;
+    }
+
+    // Disable weekend selection
+    $scope.disabled = function(date, mode) {
+      return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    };
+
+    $scope.toggleMin = function() {
+      $scope.minDate = ( $scope.minDate ) ? null : new Date();
+    };
+    $scope.toggleMin();
+
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      $scope.opened = true;
+    };
+
+    $scope.dateOptions = {
+      'year-format': "'yy'",
+      'starting-day': 1
+    };
+
+    $scope.formats = ['MMM dd, yyyy', 'dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
+    $scope.format = $scope.formats[0];
   });
