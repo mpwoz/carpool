@@ -34,7 +34,7 @@ div(ng-controller="RideListCtrl")
           th(ng-click="predicate = 'email'; reverse=!reverse") Contact Email
           th Signup
           th Ride Details
-        tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | maxPrice:rideByPrice | date:dt")
+        tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | maxPrice:rideByPrice")
           td {{ride.startLocation}}
           td {{ride.endLocation}}
           td {{ride.seats}}
