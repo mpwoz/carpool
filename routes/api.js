@@ -2,7 +2,6 @@
  * Serve JSON to our AngularJS client
  */
 var rideModel = require('../models/ride'),
-    feedbackModel = require('../models/feedback'),
     tokenModel = require('../models/token'),
     emailer = require('../email/email');
 
@@ -73,6 +72,13 @@ exports.verify = function (req, res) {
 exports.addRider = function (req, res) {
   // TODO serverside validation
   rideModel.addRider(req.body, function(result) {
+    res.send(200, {'success': true});
+  });
+};
+
+
+exports.deleteRider = function (req, res) {
+  rideModel.deleteRider(req.body, function(result) {
     res.send(200, {'success': true});
   });
 };

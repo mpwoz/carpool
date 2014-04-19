@@ -19,8 +19,10 @@ module.exports.update = function(table, updateFields, whereFields, done) {
 }
 
 module.exports.delete = function(table, fields, done) {
-  connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
-    if (err) console.log(err);
+  var q = connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
+    if (err) {
+      console.log(err);
+    }
     done(result);
   });
 }

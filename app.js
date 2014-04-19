@@ -47,6 +47,7 @@ app.post('/api/rides', api.newRide);
 app.get('/api/rides/:id', api.getRide);
 app.get('/api/userrides/:netID', api.getRidesByUser);
 app.post('/api/rides/:id', api.addRider); // POST for a specific ride id to signup for a ride
+app.delete('/api/rider', api.deleteRider); // DELETE for a specific ride id to cancel a ride
 app.get('/api/verify/:token', api.verify);
 app.get('/api/feedback/:to', api.getFeedback);
 app.post('/api/feedback', api.setFeedback);

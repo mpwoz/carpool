@@ -12,7 +12,7 @@ describe("server", function() {
       done();
     });
   });
-
+  
   it("should fetch a user's feedback", function(done) {
     request.get('http://localhost:8000/api/feedback/wozniew1@illinois.edu', function(error, response, body) {
       body = JSON.parse(body);
@@ -38,6 +38,19 @@ describe("server", function() {
     });
     done();
   });
+  
+  
+  it("should remove a rider from a ride", function(done) {
+    request({
+      method: 'DELETE',
+      uri: 'http://localhost:8000/api/rider', 
+      json: {
+        email: 'test@test.edu',
+        ride_id: 1
+      }
+    });
+  });
+  
 });
 
 /*

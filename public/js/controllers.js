@@ -46,9 +46,7 @@ angular.module('myApp.controllers', []).
     }
   }).
   controller('SignupModalCtrl', function ($scope, $modalInstance, RideFactory, ride_id) {
-
     $scope.submit = function (email) {
-
       RideFactory.signup(ride_id, email)
         .success(function(data, status, headers, config) {
           $scope.success = true;
@@ -59,7 +57,6 @@ angular.module('myApp.controllers', []).
           $modalInstance.close($scope.success);
         });
     };
-
   }).
   controller('RideListCtrl', function ($scope, $modal, $location, RideFactory) {
     RideFactory.getRides().then(function (rides) {

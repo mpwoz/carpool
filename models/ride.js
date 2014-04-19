@@ -75,3 +75,12 @@ module.exports.getRiders = function(ride_id, done) {
 module.exports.addRider = function(fields, done) {
   db.insert('rider', fields, done);
 };
+
+
+// Remove a rider from a ride
+// Fields:
+  // ride_id : The ID of the ride
+  // email   : The rider's email
+module.exports.deleteRider = function(fields, done) {
+  db.delete('rider', fields, done);
+};
