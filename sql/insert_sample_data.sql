@@ -18,3 +18,6 @@ INSERT INTO `carpool_db`.`rider` (`ride_id`, `email`) VALUES
 INSERT INTO `carpool_db`.`feedback` (`from`, `to`, `ride_id`, `comment`, `score`) VALUES
   ('gli24@illinois.edu', 'wozniew1@illinois.edu', 1, 'good ride!', 5),
   ('bajekal1@illinois.edu', 'wozniew1@illinois.edu', 1, 'hello!', 4);
+
+INSERT INTO `carpool_db`.`token` (`ride_id`, `token`, `created`) VALUES
+  (1, 'abcdefg', '2014-03-15T20:50:48.000Z');

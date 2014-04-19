@@ -56,6 +56,22 @@ exports.newRide = function (req, res) {
   });
 };
 
+// Sends confirmation email to make sure the user wants to delete ride
+exports.sendDeleteEmail = function(req, res) {
+    var getEmail;
+    var ride_id = req.params.id;
+        console.log(ride_id);
+
+    rideModel.fetchRide(ride_id,function(result){
+      getEmail = result.email;
+    });
+    console.log(getEmail);
+    tokenModel.findTokenByRide(ride_id, function(result){
+      var verifyURL = req.protocol + '://' + req.get('host') + '/api/deleteRide/' + result.token;
+      emailer.sendDeletionEmail(getEmail, verifyURL);
+    });
+    res.send(200, { 'ride_id': ride_id });
+};
 
 // When a user clicks the emailed confirmation link, mark them as 'confirmed'
 exports.verify = function (req, res) {
@@ -65,6 +81,20 @@ exports.verify = function (req, res) {
       // TODO there needs to be error checking here
       //if (err) return res.redirect("verification-failure");
       res.send(200, "success! your account is verified.");
+    });
+  });
+};
+
+//deletes everything in database associated to the token after confirmation email is sent.
+exports.deleteAllFromRide = function(req, res){
+  var token = req.params.token;
+  tokenModel.findToken(token, function(row) {
+    rideModel.delete({'id':row.ride_id}, function(result) {
+    });
+    rideModel.deleteRider({'id':row.ride_id}, function(result){
+    });
+    tokenModel.deleteToken({'id':row.ride_id}, function(result){
+      res.send(200, "success! your ride is deleted.");
     });
   });
 };

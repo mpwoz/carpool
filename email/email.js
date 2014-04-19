@@ -30,3 +30,26 @@ module.exports.sendConfirmationEmail = function(address, confirmURL) {
 		  }
 		});
 }
+
+module.exports.sendDeletionEmail = function(address, confirmURL) {
+	    var transport = nodemailer.createTransport("SMTP", {
+	      service: "Gmail",
+	      auth: {
+          user: "carpoolingtest1@gmail.com",
+          pass: "asdfasdf1231234"
+	      }
+	    });
+	    transport.sendMail({
+		  from: 'Carpooling <carpoolingtest1@gmail.com>',
+		  to: address,
+		  subject: 'Confirm your request to delete ride.',
+		  html: '<a href="'+ confirmURL+'"> Click here </a>',
+		  text: "Click this link: "+ confirmURL
+		}, function(err, responseStatus) {
+		  if (err) {
+		    console.log(err);
+		  } else {
+		    console.log(responseStatus.message);
+		  }
+		});		
+}
