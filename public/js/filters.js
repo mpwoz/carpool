@@ -14,15 +14,3 @@ angular.module('myApp.filters', [])
       return matchedRides.length > 0 ? matchedRides : rides;
     }
   });
-  // filter('date', function() {
-  //   return function (rides, depart) {
-  //     var matchedRides = [];
-  //     console.log(rides);
-  //     angular.forEach(rides, function(ride) {
-  //       var date = new Date(ride.departureTime);
-  //       // if (depart && date.getDay() === depart.getDay() && date.getMonth() === depart.getMonth()) {
-  //       //   matchedRides.push(ride);
-  //       // }
-  //     });
-  //   }
-  // });
