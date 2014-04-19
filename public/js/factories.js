@@ -24,6 +24,11 @@ angular.module('myApp.factories', [])
         return $http.get(urlBase);
       },
 
+      /**
+       * Get a list of rides for a given user
+       * @param  {string} netID The netID of the rider to get rides for
+       * @return {future}       future object of an array containing all rides
+       */
       getRidesByUser: function(netID) {
         return $http.get('/api/userrides/' + netID);
       },
@@ -46,6 +51,17 @@ angular.module('myApp.factories', [])
       signup: function(ride_id, user_email) {
         var submission = {'ride_id': ride_id, 'email': user_email};
         return $http.post(urlBase + '/' + ride_id, submission);
+      },
+
+      /**
+       * Remove a rider from a ride
+       * @param  {int} ride_id    the ID of the ride
+       * @param  {string} user_email email of the rider to remove from the ride
+       * @return {data, status, headers, config} for success and failure callbacks
+       */
+      removeFromRide: function(ride_id, user_email) {
+        var submission = {'ride_id': ride_id, 'email': user_email};
+        return $http.post('/api/rider', submission);
       }
     }
   })
