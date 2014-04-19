@@ -21,6 +21,9 @@ There are two parts:
 
 1. Install [node.js](http://nodejs.org/)
 2. `npm install` to install all dependencies
+3. Install [mysql](http://mysql.com) and run `./sql/deploy.sh`
+  (you may need to edit the credentials in the script depending on 
+  how you set up mysql)
 
 ### Running Locally
 
@@ -29,7 +32,7 @@ There are two parts:
 
 ### Deploying to Heroku
 
-Set up [https://devcenter.heroku.com/articles/quickstart](Heroku)
+Set up [Heroku](https://devcenter.heroku.com/articles/quickstart)
 
 Add the git remote so you can push to heroku 
 
