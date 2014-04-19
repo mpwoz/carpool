@@ -49,7 +49,7 @@ angular.module('myApp.factories', [])
        * @return {data, status, headers, config} for success and failure callbacks
        */
       signup: function(ride_id, user_email) {
-        var submission = {'ride_id': ride_id, 'email': user_email};
+        var submission = {"ride_id": ride_id, "email": user_email};
         return $http.post(urlBase + '/' + ride_id, submission);
       },
 
@@ -60,7 +60,7 @@ angular.module('myApp.factories', [])
        * @return {data, status, headers, config} for success and failure callbacks
        */
       removeFromRide: function(ride_id, user_email) {
-        var submission = {'ride_id': ride_id, 'email': user_email};
+        var submission = {"ride_id": ride_id, "email": user_email};
         return $http.post('/api/rider', submission);
       }
     }

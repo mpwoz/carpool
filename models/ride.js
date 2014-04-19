@@ -76,11 +76,10 @@ module.exports.addRider = function(fields, done) {
   db.insert('rider', fields, done);
 };
 
-
 // Remove a rider from a ride
 // Fields:
   // ride_id : The ID of the ride
   // email   : The rider's email
 module.exports.deleteRider = function(fields, done) {
-  db.delete('rider', fields, done);
+  db.delete("DELETE FROM `rider` WHERE `ride_id` = " + fields["ride_id"] + " AND `email` = '" + fields["email"] + "'", done);
 };

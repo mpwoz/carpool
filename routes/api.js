@@ -3,6 +3,7 @@
  */
 var rideModel = require('../models/ride'),
     tokenModel = require('../models/token'),
+    feedbackModel = require('../models/feedback'),
     emailer = require('../email/email');
 
 exports.listRides = function (req, res) {
@@ -93,7 +94,6 @@ exports.getFeedback = function(req, res) {
 
 exports.setFeedback = function(req, res){
   feedbackModel.setFeedback(req.body, function(result){
-    //console.log(result);
     res.send(200, {'success': true});
   });
 };

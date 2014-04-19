@@ -11,8 +11,14 @@ div(ng-controller="RideDetailCtrl")
 
   h4 Riders
   table.table.table-bordered.table-hover
+    tr
+      th Rider Email
+      th Remove from Ride
     tr(ng-repeat="riderEmail in ride.riders")
-      td {{riderEmail}}
+      td
+        a(href="/user/{{riderEmail.substring(0, riderEmail.indexOf('@'))}}") {{riderEmail}}
+      td
+        button.btn.btn-info(ng-click="removeFromRide(ride.id, riderEmail)") Remove
 
   h5 Contact {{ride.email}} for more information
   br

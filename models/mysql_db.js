@@ -18,8 +18,8 @@ module.exports.update = function(table, updateFields, whereFields, done) {
   });
 }
 
-module.exports.delete = function(table, fields, done) {
-  var q = connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
+module.exports.delete = function(query, done) {
+  connection.query(query, function(err, result) {
     if (err) {
       console.log(err);
     }
