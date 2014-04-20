@@ -90,11 +90,11 @@ exports.deleteAllFromRide = function(req, res){
   var token = req.params.token;
   tokenModel.findToken(token, function(row) {
     rideModel.delete({'id':row.ride_id}, function(result) {
-    });
-    rideModel.deleteRider({'id':row.ride_id}, function(result){
-    });
-    tokenModel.deleteToken({'id':row.ride_id}, function(result){
-      res.send(200, "success! your ride is deleted.");
+      rideModel.deleteRider({'ride_id':row.ride_id}, function(result){
+        tokenModel.deleteToken({'ride_id':row.ride_id}, function(result){
+          res.send(200, "success! your ride is deleted.");
+        });
+      });
     });
   });
 };
