@@ -62,6 +62,15 @@ angular.module('myApp.factories', [])
       removeFromRide: function(ride_id, user_email) {
         var submission = {"ride_id": ride_id, "email": user_email};
         return $http.post('/api/rider', submission);
+      },
+
+      /**
+       * Send a confirmation email to the driver to delete a ride.
+       * @param  {int} ride_id the ID of the ride
+       * @return {future}         future object of success
+       */
+      deleteRide: function(ride_id) {
+        return $http.get('/api/delete/' + ride_id);
       }
     }
   })

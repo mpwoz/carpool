@@ -6,6 +6,7 @@
 describe('myApp.controllers', function() {
   beforeEach(module('myApp.controllers'));
   beforeEach(module('myApp.factories'));
+  beforeEach(module('ui.bootstrap'));
 
 
   /**
@@ -29,6 +30,10 @@ describe('myApp.controllers', function() {
         scope.newride_form = {'email': invalid_emails[0]};
         scope.newride_form.email = {};
         scope.newride_form.email.$error = {pattern: true};
+        scope.newride_form.startLocation = {};
+        scope.newride_form.startLocation.$error = {pattern: false};
+        scope.newride_form.endLocation = {};
+        scope.newride_form.endLocation.$error = {pattern: false};
 
         for(var i = 0; i < invalid_emails.length; i++) {
           scope.email = invalid_emails[i][0];
