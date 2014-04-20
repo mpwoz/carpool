@@ -81,5 +81,13 @@ module.exports.addRider = function(fields, done) {
   // ride_id : The ID of the ride
   // email   : The rider's email
 module.exports.deleteRider = function(fields, done) {
-  db.delete("DELETE FROM `rider` WHERE `ride_id` = " + fields["ride_id"] + " AND `email` = '" + fields["email"] + "'", done);
+  var query = "DELETE FROM `rider` WHERE `ride_id` = ? AND `email` = ?";
+  var fields = [fields.ride_id, fields.email];
+  db.query(query, fields, done);
+};
+
+module.exports.deleteAllRiders = function(ride_id, done) {
+  var query = "DELETE FROM `rider` WHERE `ride_id` = ?";
+  var fields = [ride_id];
+  db.query(query, fields, done);
 };

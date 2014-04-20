@@ -14,8 +14,8 @@ module.exports.createToken = function(ride_id, done) {
         done(token);
       });
 };
-module.exports.deleteToken = function(ride_id, done) {
-  db.delete('token', ride_id, done);
+module.exports.deleteToken = function(fields, done) {
+  db.delete('token', fields, done);
 }
 
 module.exports.findToken = function(token, done) {

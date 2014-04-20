@@ -18,13 +18,25 @@ module.exports.update = function(table, updateFields, whereFields, done) {
   });
 }
 
-module.exports.delete = function(query, done) {
-  connection.query(query, function(err, result) {
+module.exports.query = function(query, fields, done) {
+  var q = connection.query(query, fields, function(err, result) {
     if (err) {
       console.log(err);
     }
     done(result);
   });
+  console.log(q.sql);
+};
+
+module.exports.delete = function(table, fields, done) {
+
+  var q = connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    done(result);
+  });
+  console.log(q.sql);
 }
 
 module.exports.insert = function(table, fields, done) {
