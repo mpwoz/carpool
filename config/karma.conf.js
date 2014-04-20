@@ -5,6 +5,7 @@ module.exports = function(config){
     files : [
       'public/js/lib/angular/angular.js',
       'public/js/lib/angular/angular-*.js',
+      'public/js/lib/angular/ui-bootstrap-tpls-0.10.0.min.js',
       'test/lib/angular/angular-mocks.js',
 
       'public/js/**/*.js',
@@ -13,7 +14,6 @@ module.exports = function(config){
 
     exclude : [
       'public/js/lib/angular/angular-loader.js',
-      'public/js/lib/angular/*.min.js',
       'public/js/lib/angular/angular-scenario.js'
     ],
 
