@@ -117,6 +117,12 @@ angular.module('myApp.controllers', ['ui.bootstrap']).
           $scope.success = false;
         });
     }
+
+    $scope.deleteRide = function(ride_id) {
+      RideFactory.deleteRide(ride_id).then(function (success) {
+        $scope.rideDeleted = true;
+      });
+    }
   }).
   controller('FeedbackCtrl', function($scope, FeedbackFactory) {
     $scope.addFeedback = function() {

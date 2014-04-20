@@ -20,6 +20,8 @@ div(ng-controller="RideDetailCtrl")
       td
         button.btn.btn-info(ng-click="removeFromRide(ride.id, riderEmail)") Remove
 
+  button.btn.btn-info(ng-click="deleteRide(ride.id)") Delete Ride
+
   h5 Contact {{ride.email}} for more information
   br
   a(href='/rides') Back to rides
