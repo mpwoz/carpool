@@ -29,8 +29,38 @@ module.exports.query = function(query, fields, done) {
 };
 
 module.exports.delete = function(table, fields, done) {
+  var sql_string = "";
 
-  var q = connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
+  // Creating the sql string w/ fields
+  sql_string = sql_string.concat("DELETE FROM `");
+  sql_string = sql_string.concat(table);
+  sql_string = sql_string.concat("` WHERE ");
+
+  for (i in fields) {
+    var key = i;
+    var val = fields[i];
+
+    sql_string = sql_string.concat("`");
+    sql_string = sql_string.concat(key);
+    sql_string = sql_string.concat("`");
+    
+    if (typeof val === "number") {
+      sql_string = sql_string.concat("=");
+      sql_string = sql_string.concat(val);
+    }
+    else {
+      sql_string = sql_string.concat("='");
+      sql_string = sql_string.concat(val);
+      sql_string = sql_string.concat("'");
+    }
+
+    sql_string = sql_string.concat(" AND ");
+  }
+  // Remove the last "AND" in the sql_string
+  sql_string = sql_string.substring(0, sql_string.length - 5);
+ 
+  var q = connection.query(sql_string, function(err, result) {
+  //var q = connection.query('DELETE FROM ?? WHERE ?', [table, fields], function(err, result) {
     if (err) {
       console.log(err);
     }
@@ -40,10 +70,11 @@ module.exports.delete = function(table, fields, done) {
 }
 
 module.exports.insert = function(table, fields, done) {
-  connection.query('INSERT INTO ?? SET ?', [table, fields], function(err, result) {
+  var q = connection.query('INSERT INTO ?? SET ?', [table, fields], function(err, result) {
     if (err) console.log(err);
     done(result);
   });
+  //console.log(q.sql);
 }
 
 // Select items matching the given fields JSON
