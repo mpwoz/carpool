@@ -14,11 +14,19 @@ module.exports.createToken = function(ride_id, done) {
         done(token);
       });
 };
-
+module.exports.deleteToken = function(ride_id, done) {
+  db.delete('token', ride_id, done);
+}
 
 module.exports.findToken = function(token, done) {
   db.select('token', { 'token': token }, function(rows, fields) {
     // TODO what if it's not in the table?
+    done(rows[0]);
+  });
+};
+
+module.exports.findTokenByRide = function(ride_id, done) {
+  db.select('token', {'ride_id':ride_id}, function(rows, fields) {
     done(rows[0]);
   });
 };

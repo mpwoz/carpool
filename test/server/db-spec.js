@@ -22,6 +22,11 @@ describe("rides database", function() {
     'seats': 4,
     'seatPrice': 10
   };
+  var token = {
+    'ride_id': 1,
+    'token': 'abcdefgh',
+    'created':'2014-03-15T20:50:48.000Z'
+  };
   
   it("should insert a row", function() {
     var id;
@@ -43,7 +48,17 @@ describe("rides database", function() {
     });
   });
 
+  it("should remove a token from database", function(done) {
+    tokens.deleteToken(token.ride_id, function(result){
+      expect(result).toBeDefined();
+    });
+  });
 
+  it("should find a token by ride", function(done){
+    tokens.findTokenByRide({'ride_id': 1}, function(result){
+      expect(result).toBeDefined();
+    })
+  });
 });
 
 
