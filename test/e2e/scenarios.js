@@ -103,4 +103,20 @@ describe('carpool', function() {
       });
     });
   });
+
+  describe('Deleting a rider', function() {
+    beforeEach(function() {
+      browser.get('/rides/1');
+    });
+
+    it('should delete the last rider on the list of riders', function() {
+      var buttons = element.all(by.css('.btn'));
+      buttons.last().click();
+
+      var signedUpRiders = element.all(by.repeater('riderEmail in ride.riders'));
+      signedUpRiders.then(function(arr){
+        expect(arr.length).toBe(3);
+      });
+    });
+  });
 });
