@@ -54,8 +54,8 @@ describe('carpool', function() {
       startlocation.sendKeys("naperville");
 
       var buttons = element.all(by.css('.btn'));
-      expect(buttons.count()).toBe(2);
-      buttons.first().click();
+      expect(buttons.count()).toBe(46);
+      buttons.get(44).click();
 
       var modalWindow = element(by.css('.modal-dialog'));
       expect(modalWindow.isDisplayed()).toBe(true);
@@ -71,7 +71,51 @@ describe('carpool', function() {
 
       var signedUpRiders = element.all(by.repeater('riderEmail in ride.riders'));
       signedUpRiders.then(function(arr){
-        expect(arr[arr.length-1].getText()).toEqual("test2@illinois.edu");
+        expect(arr[arr.length-1].getText()).toEqual("test2@illinois.edu Remove");
+      });
+    });
+  });
+  
+  describe('Filtering by datepicker', function() {
+    beforeEach(function() {
+      browser.get('/rides');
+    });
+
+    it('should go to the rides page and filter by the date', function() {
+      var datepicker = element(by.model('dt'));
+      datepicker.click();
+
+      var switchMode = element(by.css('.btn-block'));
+      switchMode.click();
+
+      var monthsButton = element.all(by.css('.btn-sm'));
+      monthsButton.get(5).click();
+
+      var daysButton = element.all(by.css('.btn-sm'));
+      daysButton.get(17).click();
+
+      var buttons = element.all(by.css('.btn'));
+      buttons.get(50).click();
+
+      var totalRows = element.all(by.repeater('ride in rides'));
+      totalRows.then(function(arr) {
+        expect(arr.length).toBe(2);
+      });
+    });
+  });
+
+  describe('Deleting a rider', function() {
+    beforeEach(function() {
+      browser.get('/rides/1');
+    });
+
+    it('should delete the last rider on the list of riders', function() {
+      var buttons = element.all(by.css('.btn'));
+      buttons.last().click();
+
+      var signedUpRiders = element.all(by.repeater('riderEmail in ride.riders'));
+      signedUpRiders.then(function(arr){
+        expect(arr.length).toBe(3);
       });
     });
   });
