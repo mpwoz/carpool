@@ -4,7 +4,7 @@ div(ng-controller="RideDetailCtrl")
   h4 Start Location: {{ride.startLocation}}
   h4 End Location: {{ride.endLocation}}
   br
-  h4 Available Seats: {{ride.seats}}
+  h4 Available Seats: {{ride.seats - ride.riders.length}}
   h4 Seat Prices: {{ride.seatPrice | currency : symbol : amount}}
   h4 Departure Time: {{ride.departureTime | date:"MMM dd, yyyy hh:mm a"}}
   br
