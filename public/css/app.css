@@ -171,9 +171,9 @@ body {
  */
 
 // Modal text color fix
-.modal-header, .modal-body, .modal-footer {
-  color: #555;
-  text-shadow: none;
+.modal-header p, .modal-body p, .modal-footer p {
+  color: #555 !important;
+  text-shadow: none !important;
 }
 
 // Color fixes for table buttons/text
