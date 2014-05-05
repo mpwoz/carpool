@@ -75,7 +75,7 @@ describe('carpool', function() {
       });
     });
   });
-  
+
   describe('Filtering by datepicker', function() {
     beforeEach(function() {
       browser.get('/rides');
@@ -115,7 +115,7 @@ describe('carpool', function() {
 
       var signedUpRiders = element.all(by.repeater('riderEmail in ride.riders'));
       signedUpRiders.then(function(arr){
-        expect(arr.length).toBe(3);
+        expect(arr.length).toBe(4);
       });
     });
   });
