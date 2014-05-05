@@ -29,31 +29,33 @@ if (app.get('env') === 'development') {
 
 // production only
 if (app.get('env') === 'production') {
-  // TODO
+  // production-specific deployment goes here
 };
 
 
 /**
  * Routes
  */
-
 // serve index and view partials
 app.get('/', pages.index);
 app.get('/partials/:name', pages.partials);
 
 /* JSON API */
-app.get('/api/rides', api.listRides);
-app.post('/api/rides', api.newRide);
-app.get('/api/rides/:id', api.getRide);
-app.get('/api/userrides/:netID', api.getRidesByUser);
-app.post('/api/rides/:id', api.addRider); // POST for a specific ride id to signup for a ride
-app.post('/api/rider', api.deleteRider); // POST with a specific ride id and email to remove that user
-app.get('/api/verify/:token', api.verify);
-app.get('/api/delete/:id', api.sendDeleteEmail);
-app.get('/api/deleteRide/:token', api.deleteAllFromRide);
-app.get('/api/feedback/:to', api.getFeedback);
-app.post('/api/feedback', api.setFeedback);
-app.post('/api/feedback/:to', api.setFeedback);
+app.get( '/api/rides',             api.listRides);
+app.post('/api/rides',             api.newRide);
+app.get( '/api/rides/:id',         api.getRide);
+app.post('/api/rides/:id',         api.addRider);
+app.get( '/api/userrides/:netID',  api.getRidesByUser);
+app.post('/api/rider',             api.deleteRider);
+
+app.get( '/api/verify/:token',     api.verify);
+
+app.get( '/api/delete/:id',        api.sendDeleteEmail);
+app.get( '/api/deleteRide/:token', api.deleteAllFromRide);
+
+app.post('/api/feedback',          api.setFeedback);
+app.get( '/api/feedback/:to',      api.getFeedback);
+app.post('/api/feedback/:to',      api.setFeedback);
 
 // For bookmarking partial routes
 app.get('*', pages.index);
@@ -61,7 +63,6 @@ app.get('*', pages.index);
 /**
  * Start Server
  */
-
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 });

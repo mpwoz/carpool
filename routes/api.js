@@ -12,9 +12,9 @@ exports.listRides = function (req, res) {
   });
 };
 
-// Get a single ride by id
-// TODO in the future, this will also join on rider table, feedback, etc.
-// to get more detail for the ride page
+/*
+ * Get a single ride by id
+ */
 exports.getRide = function (req, res) {
   var id = req.params.id;
   rideModel.fetchRide(id, function(ride) {
@@ -25,6 +25,9 @@ exports.getRide = function (req, res) {
   });
 };
 
+/*
+ * Get all the rides for a single user, by passing only their netID
+ */
 exports.getRidesByUser = function(req, res) {
   var user = req.params.netID+"@illinois.edu";
   rideModel.fetchRidesByUser(user, function(rides) {
@@ -32,9 +35,11 @@ exports.getRidesByUser = function(req, res) {
   });
 };
 
-// Create a new ride and persist it to the database
-// If successful, return the id of the new row
-// Also handle creating a confirmation token and sending the email here
+/*
+ * Create a new ride and persist it to the database
+ * If successful, return the id of the new database row
+ * Also create a confirmation token and send the verification email.
+ */
 exports.newRide = function (req, res) {
   // TODO serverside validation
 
@@ -57,7 +62,9 @@ exports.newRide = function (req, res) {
   });
 };
 
-// Sends confirmation email to make sure the user wants to delete ride
+/* 
+ * Sends confirmation email to make sure the user wants to delete ride
+ */
 exports.sendDeleteEmail = function(req, res) {
     var getEmail;
     var ride_id = req.params.id;
@@ -74,7 +81,9 @@ exports.sendDeleteEmail = function(req, res) {
     res.send(200, { 'ride_id': ride_id });
 };
 
-// When a user clicks the emailed confirmation link, mark them as 'confirmed'
+/*
+ * When a user clicks the emailed confirmation link, mark them as 'confirmed'
+ */
 exports.verify = function (req, res) {
   var token = req.params.token;
   tokenModel.findToken(token, function(row) {
@@ -86,7 +95,9 @@ exports.verify = function (req, res) {
   });
 };
 
-//deletes everything in database associated to the token after confirmation email is sent.
+/*
+ * deletes everything in database associated to the token after confirmation email is sent.
+ */
 exports.deleteAllFromRide = function(req, res){
   var token = req.params.token;
   tokenModel.findToken(token, function(row) {
@@ -100,21 +111,34 @@ exports.deleteAllFromRide = function(req, res){
   });
 };
 
+/*
+ * Add a rider to a specific ride in the database
+ * The request should have fields
+ *  'ride_id': the ID of the ride to add to
+ *  'email': the email of the rider
+ */
 exports.addRider = function (req, res) {
-  // TODO serverside validation
   rideModel.addRider(req.body, function(result) {
     res.send(200, {'success': true});
   });
 };
 
 
+/*
+ * Remove a rider from a specific ride. 
+ * Request should have fields
+ *  'ride_id': the ID of the ride to add to
+ *  'email': the email of the rider
+ */
 exports.deleteRider = function (req, res) {
   rideModel.deleteRider(req.body, function(result) {
     res.send(200, {'success': true});
   });
 };
 
-//gets all the feedback for a specific email.
+/*
+ * gets all the feedback for a specific email.
+ */
 exports.getFeedback = function(req, res) {
   var id = req.params.to;
   feedbackModel.getFeedbackForEmail(id, function(feedback) {
@@ -122,6 +146,14 @@ exports.getFeedback = function(req, res) {
   });
 };
 
+/*
+ * Set the feedback from one email to another. Request fields:
+ *  from: The email leaving the feedback
+ *  to: the email receiving the feedback
+ *  ride_id: the id of the ride for feedback
+ *  comment: the actual text of the feedback
+ *  score: an integer score of the recipient
+ */
 exports.setFeedback = function(req, res){
   feedbackModel.setFeedback(req.body, function(result){
     res.send(200, {'success': true});
