@@ -30,20 +30,6 @@ There are two parts:
 1. `./scripts/start-server.sh`
 2. Open browser to [http://localhost:8000](http://localhost:8000)
 
-### Deploying to Heroku
-
-Set up [Heroku](https://devcenter.heroku.com/articles/quickstart)
-
-Add the git remote so you can push to heroku 
-
-`git remote add heroku git@heroku.com:cps-carpool.git`
-
-Then, commit all your changes and run 
-
-`git push heroku master`
-
-To view the site, visit [http://cps-carpool.herokuapp.com](http://cps-carpool.herokuapp.com)
-
 ### Running Tests
 
 #### Unit Tests
