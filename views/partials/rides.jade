@@ -15,7 +15,8 @@ div(ng-controller="RideListCtrl")
       label(for="price") Filter rides by price.
       select.form-control(ng-model="rideByPrice", ng-options="ride.seatPrice for ride in rides", id="price")
 
-    div.row
+    label Filter rides by departure date.
+    div.row.form-group
       div.col-md-6
         p.input-group
           input.form-control(type='text', 
@@ -27,7 +28,6 @@ div(ng-controller="RideListCtrl")
           span.input-group-btn
             button.btn.btn-default(ng-click='open($event)')
               i.glyphicon.glyphicon-calendar
-      button.btn.btn-default(ng-click='chooseDate()') Search Dates
 
       table.table.table-bordered.table-hover
         tr
