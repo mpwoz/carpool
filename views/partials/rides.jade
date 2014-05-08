@@ -14,15 +14,20 @@ div(ng-controller="RideListCtrl")
     div(class="form-group")
       label(for="price") Filter rides by price.
       select.form-control(ng-model="rideByPrice", ng-options="ride.seatPrice for ride in rides", id="price")
-    div(ng-controller='DatepickerDemoCtrl')
-      div.row
-        div.col-md-6
-          p.input-group
-            input.form-control(type='text', datepicker-popup='{{format}}', ng-model='dt', is-open='opened', datepicker-options='dateOptions', close-text='Close')
-            span.input-group-btn
-              button.btn.btn-default(ng-click='open($event)')
-                i.glyphicon.glyphicon-calendar
-        button.btn.btn-default(ng-click='chooseDate()') Search Dates
+
+    div.row
+      div.col-md-6
+        p.input-group
+          input.form-control(type='text', 
+            datepicker-popup='{{format}}', 
+            ng-model='dt', 
+            is-open='opened', 
+            datepicker-options='dateOptions', 
+            close-text='Close')
+          span.input-group-btn
+            button.btn.btn-default(ng-click='open($event)')
+              i.glyphicon.glyphicon-calendar
+      button.btn.btn-default(ng-click='chooseDate()') Search Dates
 
       table.table.table-bordered.table-hover
         tr
@@ -34,7 +39,7 @@ div(ng-controller="RideListCtrl")
           th(ng-click="predicate = 'email'; reverse=!reverse") Contact Email
           th Signup
           th Ride Details
-        tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | maxPrice:rideByPrice")
+        tr(ng-repeat="ride in rides | orderBy:predicate:reverse | filter:rideFilter | filter:dateFilter | maxPrice:rideByPrice")
           td {{ride.startLocation}}
           td {{ride.endLocation}}
           td {{ride.seats}}
